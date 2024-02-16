@@ -80,11 +80,10 @@ select {
 #create-form-login {
     max-width: 400px;
     margin: auto;
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
-    padding: 8px;
     display: grid;
     margin-top: 180px;
     justify-content: space-around;
@@ -110,7 +109,7 @@ select {
 }
 
 .fa-exclamation-circle {
-    margin-left: 175px;
+    margin-left: 155px;
     margin-top: 5px;
 }
 
@@ -119,8 +118,8 @@ select {
 }
 
 #create-form-login label {
-    padding: 4px;
-    width: 54px;   
+    width: 54px;  
+    margin-left: 6%; 
 }
 
 #inputLogin, #inputPass{
@@ -172,10 +171,10 @@ select {
 /* EDIT PROFILE FORM */
 
 #create-form-edit{
-    width: 900px;
-    height: 660px;
+    width: 500px;
+    height: 460px;
     margin-top: 60px;
-    margin-left: 12%;
+    margin-left: 30%;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

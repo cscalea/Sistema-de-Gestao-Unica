@@ -18,7 +18,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
   
     <hr>
     
-    <h5 id="h5index">Seja Bem-Vindo - <?php echo ($_SESSION['username']) ?></h5>
+    <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['username']) ?></h5>
     
   
 

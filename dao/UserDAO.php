@@ -45,6 +45,7 @@ class UserDAO implements UserDAOInterface
             } else {
                 $_SESSION['login'] = "";
                 $this->message->setMessage("Usuário não encontrado no AD / Senha inválida", "error", "auth.php");
+                
             }
         }
     }
