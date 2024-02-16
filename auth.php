@@ -8,7 +8,9 @@ $message = new Message($BASE_URL);
 // $userDao->verifyAuth2($_SESSION['login']);
 // }
 
+//adicionei um coment no arquivo auth.php
 ?>
+
 
 
 <?php if(!isset($_SESSION['login']) || $_SESSION['login'] === ""): ?>
