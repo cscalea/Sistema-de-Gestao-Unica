@@ -148,7 +148,7 @@ if (!empty($flassMessage["msg"])) {
 
                 <div class="item"><a target="_blank" href="#"><i class="fas fa-chart-bar"></i>Ferramenta de BI</a></div>
 
-                <div class="item"><a target="_blank" href="http://10.15.16.213/"><i class="fas fa-phone-volume"></i>Ouvidoria</a></div>
+                <div class="item"><a target="_blank" href="https://fiscaliza.ipem.sp.gov.br/"><i class="fas fa-phone-volume"></i>Ouvidoria</a></div>
 
                 <div class="item"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>
             </div>

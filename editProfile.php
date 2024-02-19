@@ -10,7 +10,7 @@ require_once("templates/header.php");
 
         <br>
         <div class="form-group">
-            <h1>Editar perfil:</h1>
+            <h1><a href="<?=$BASE_URL?>index.php"><i id="backHomeIcon"class="fa fa-home"></i></a>Editar perfil</h1>
             <hr>
             <label for="name">Nome:</label>
             <input type="text" id="inputName" name="name" value="<?php echo $_SESSION['username'] ?>">

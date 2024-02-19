@@ -31,7 +31,7 @@ $message = new Message($BASE_URL);
                 
                 <img src="<?= $BASE_URL ?>img/ipemetro.png" alt="IPEM" id="img-ipem-login">
     
-                <h2 id="txt-form-login" >Sistema único de Gestão</h2>
+                <h2 id="txt-form-login" >Sistema Único de Gestão</h2>
                <hr>
                     <!-- INPUT "ESCONDIDO" PARA ENVIAR O VALOR LOGIN PARA AUTH_PROCESS RECEBER VIA TYPE -->
                     <input type="hidden" name="type" value="login">                    
@@ -72,6 +72,3 @@ $message = new Message($BASE_URL);
 </div>
 
 <?php endif; ?>
-<?php
-require_once("templates/footer.php");
-?>

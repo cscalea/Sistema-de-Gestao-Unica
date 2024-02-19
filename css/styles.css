@@ -7,7 +7,7 @@
 
 body {
     min-height: 100vh;
-    background: #fff;
+    background: #eee;
     color: white;
     background-size: cover;
     background-position: center;
@@ -70,7 +70,7 @@ select {
 
 /* DIV MÃE de toda VIEW */
 #main-container {
-    background-color: #fff;
+    background-color: #eee;
     color: black;
     padding: 40px;
     height: 600px;
@@ -179,9 +179,8 @@ select {
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
-    padding: 8px;
-    display: inline-block;
-    justify-content: space-around;
+    display: grid;
+    justify-content: space-evenly;
 }
 
 #create-form {
@@ -202,13 +201,14 @@ select {
 #backHomeIcon{
     color: black;
     font-size: 30px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 #backHomeIcon:hover {
     transition: .2s;
     transform: scale(1.2);
     color: #2273c5;
+    cursor: pointer;
 }
 
 /* BOTÃO DO FORMULÁRIO DE ENTRAR EM AUTH.PHP */
