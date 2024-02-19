@@ -6,9 +6,9 @@ require_once("dao/MenuDAO.php");
 require_once("model/message.php");
 
 $message = new Message($BASE_URL);
-if(isset($_SESSION['userIsAdm']) && $_SESSION['userIsAdm'] == 0){
+if (isset($_SESSION['userIsAdm']) && $_SESSION['userIsAdm'] == 0) {
     $message->setMessage("Você não tem permissão para acessar essa página.", "error", "index.php");
-} 
+}
 /* INSTANCIAÇÃO DOS OBJETOS User e Menu, para podermos fazer a utilização dos métodos dessas classes */
 $userDao = new UserDAO($conn, $BASE_URL);
 $menuDao = new MenuDAO($conn, $BASE_URL);
@@ -24,10 +24,9 @@ $arrayMenus2 = $menuDao->listMenus2($_SESSION['login']);
 ?>
 
 <div id="main-container" class="container-fluid">
-    <div id="back-home">
-<a href="<?php $BASE_URL?>index.php"><i class="fa fa-home"></i></a>
-</div>
-    <h1 id="main-title">Alterar Permissões </h1>
+  
+    <h1 id="main-title"><a href="<?php $BASE_URL ?>index.php"><i id="backHomeIcon"class="fa fa-home"></i></a>Alterar Permissões </h1>
+
     <hr>
     <h1> <?php $_SESSION['login']; ?> </h1>
     <form id="create-form" action="<?= $BASE_URL ?>addPermission_process.php" method="POST">
@@ -47,30 +46,30 @@ $arrayMenus2 = $menuDao->listMenus2($_SESSION['login']);
         <div class="form-group">
             <label for="modulo">Menu:</label>
             <select name="fk_idmenus" id="listMenu">
-            <option>Selecione o menu</option>
+                <option>Selecione o menu</option>
                 <?php foreach ($arrayMenus2 as $menu) : ?>
-                    <option value="<?php echo $menu->id ?>"><?php echo $menu->menu?></option>
+                    <option value="<?php echo $menu->id ?>"><?php echo $menu->menu ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         <div class="form-group">
             <label for="adm">Nível de acesso:</label>
             <select name="adm" id="listAdm">
-            <option value="0">Não é administrador</option>
-            <option value="1">É administrador</option>
-                
+                <option value="0">Não é administrador</option>
+                <option value="1">É administrador</option>
+
             </select>
         </div>
         <button type="submit" id="btnCadastro" class="card-btn">Adicionar</button>
     </form>
-    <hr>         
+    <hr>
     <form id="create-form" action="<?= $BASE_URL ?>addPermission_process.php" method="POST">
         <input type="hidden" name="type" value="delete">
         <h2>Remover acesso</h2>
         <div class="form-group">
             <label for="user">Usuário:</label>
             <select name="fk_idusers" id="listUser">
-            <option>Selecione o usuário</option>
+                <option>Selecione o usuário</option>
                 <?php foreach ($arrayUsers as $user) : ?>
                     <option value="<?php echo $user->id ?>"><?php echo $user->name ?></option>
                 <?php endforeach; ?>
@@ -80,16 +79,16 @@ $arrayMenus2 = $menuDao->listMenus2($_SESSION['login']);
         <div class="form-group">
             <label for="modulo">Menu:</label>
             <select class="meuselect" name="fk_idmenus" id="listMenu">
-            <option>Selecione o menu</option>
+                <option>Selecione o menu</option>
                 <?php foreach ($arrayMenus2 as $menu) : ?>
                     <option value="<?php echo $menu->id ?>"><?php echo $menu->menu ?></option>
                     <?php $_SESSION['idmenu'] = $menu->id; ?>
                 <?php endforeach; ?>
             </select>
-           
+
         </div>
 
-        
+
 
         <button type="submit" id="btnCadastro" class="card-btn">Remover</button>
     </form>

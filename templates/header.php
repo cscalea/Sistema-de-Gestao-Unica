@@ -55,7 +55,7 @@ if (!empty($flassMessage["msg"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestão Corporativa</title>
+    <title>Sistema Único de Gestão</title>
     <link class="circuito" rel="short icon" href="<?= $BASE_URL ?>img/logo-branco.png" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" integrity="sha512-drnvWxqfgcU6sLzAJttJv7LKdjWn0nxWCSbEAtxJ/YYaZMyoNLovG7lPqZRdhgL1gAUfa+V7tbin8y+2llC1cw==" crossorigin="anonymous" />
@@ -82,19 +82,19 @@ if (!empty($flassMessage["msg"])) {
 
         <!-- MENU BUTTON -->
         <div class="menu-btn">
-            <i class="fas fa-bars"></i>
+            <i id="openMenu" class="fas fa-bars"></i>
         </div>
         <div class="side-bar">
             <!-- HEADER SECTION -->
             <header>
                 <!-- close button-->
                 <div class="close-btn">
-                    <i class="fas fa-times"></i>
+                    <i id="closeMenu"class="fas fa-times"></i>
                 </div>
                 <!-- image -->
                 <img src="img/ipem.png" alt="IPEM">
                 <!-- logo -->
-                <h1>Sistema único de Gestão</h1>
+                <h1>Sistema Único de Gestão</h1>
             </header>
             <div id="profileMenu">
              <h2>Bem-Vindo <?= $nome ?> -  <a href="<?php $BASE_URL ?>editProfile.php">   <i class="fas fa-edit" title="Editar Perfil"></i></a></h2>
