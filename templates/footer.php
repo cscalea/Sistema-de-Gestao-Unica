@@ -3,11 +3,9 @@
 <footer id="footer" class="fixed">
 
          
-  <div class="container">
-   
-    </div>
 
-    <div class="container-rodape">    
+
+      
       <div class="logo-rodape">
         <a href="#">
             <img id="imgfooter" src="img/ipem.png"  alt="site do Sistema de Gestão Corporativa - IPEM SP"  width="100%" height="100%">
@@ -17,7 +15,7 @@
           <p>&copy; 2024 </p>
       </div>
      
-    </div>
+ 
 
 
 

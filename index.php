@@ -28,7 +28,6 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
   
    echo '<hr>';
   echo 'Dados para fins de testes';
-  echo '<hr>';
   echo '<br>';
   echo '<br>';
 echo '$_SESSION Login: ' . $_SESSION['login'];
@@ -46,6 +45,39 @@ echo '$_SESSION Usuário é Administrador - [1]sim [0]não: ' . $_SESSION['userI
     
   
 <hr>
+
+<!-- <div class="container">
+  <div class="row">
+      <div class="col-4">
+    <h1>IPEM</h1>
+    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-4">
+    <h1>IPEM</h1>
+    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+  </div>
+  
+</div> -->
 
   
 </div>

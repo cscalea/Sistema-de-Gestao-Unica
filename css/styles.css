@@ -457,6 +457,12 @@ header h1 {
   align-items: center;
 }
 
+.container{
+    display: inline;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
 /*  @@@@@@@@@@@@@@@@@@     FOOTER     @@@@@@@@@@@@@@@@@@  */
 #footer {
     background-color: #003366;
