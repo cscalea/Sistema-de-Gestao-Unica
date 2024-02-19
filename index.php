@@ -17,7 +17,11 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 </div>
   
     <hr>
-    
+  
+    <div class="offset-md-1 col-md-10">
+    <div id="painel">
+     
+      
     <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['username']) ?></h5>
     
   
@@ -45,6 +49,43 @@ echo '$_SESSION Usuário é Administrador - [1]sim [0]não: ' . $_SESSION['userI
     
   
 <hr>
+
+<div class="container">
+  <div class="row">
+      <div class="col-4">
+    <h1>card...</h1>
+    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>card...</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>card...</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-4">
+    <h1>card...</h1>
+    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>card...</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+      <div class="col-4">
+      <h1>card...</h1>
+      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      </div>
+  </div>
+  
+</div>
+
+</div>
+</div>
+
 
 <!-- <div class="container">
   <div class="row">
