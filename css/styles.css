@@ -422,7 +422,7 @@ header h1 {
     height: 30px;
     border-radius:1cqh;
     width: 30%;
-    margin-left: 12%;
+    margin-left: 70%;
     padding: 0;
 }
 
@@ -430,7 +430,7 @@ header h1 {
     background-color: transparent;
     border: 1px solid #001f3d;
     width: 30%;
-    margin-left: 12%;
+    margin-left: 70%;
     transition: .4s;
     color: black;
 }
@@ -466,7 +466,7 @@ header h1 {
 
 #painel{
 
-    background-color: rgb(191, 206, 255);
+    background-color: rgb(223, 230, 255);
     height: 100vh;
     border-radius: 2cqh;
     padding: 30px;
