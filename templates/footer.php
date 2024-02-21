@@ -12,7 +12,7 @@
             
           </a>
           <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
-          <p>&copy; 2024 </p>
+          
       </div>
      
  

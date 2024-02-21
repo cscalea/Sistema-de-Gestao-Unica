@@ -7,7 +7,7 @@ require_once("model/message.php");
 
 $message = new Message($BASE_URL);
 if (isset($_SESSION['userIsAdm']) && $_SESSION['userIsAdm'] == 0) {
-    header("location: index.php");
+    $message->setMessage("Você não tem permissão para acessar essa página.", "back", "index.php");
 }
 /* INSTANCIAÇÃO DOS OBJETOS User e Menu, para podermos fazer a utilização dos métodos dessas classes */
 $userDao = new UserDAO($conn, $BASE_URL);
