@@ -6,7 +6,7 @@
         public $id;
         public $menu;
         public $link;
-
+        public $class;
 
     }
 

@@ -34,7 +34,8 @@ $userDao = new UserDAO($conn, $BASE_URL);
 
 if (isset($_SESSION['login'])) {
     
-    $menuarrays = $MenuDAO->getMenusByUserLogin($_SESSION['login']);
+    // $menuarrays = $MenuDAO->getMenusByUserLogin($_SESSION['login']);
+    $menuarrays = $MenuDAO->listMenus();
 }
 // print_r($menuarrays);
 // $_SESSION['login'] === "";
@@ -45,8 +46,6 @@ $flassMessage = $message->getMessage();
 if (!empty($flassMessage["msg"])) {
     $message->clearMessage();
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -107,30 +106,18 @@ if (!empty($flassMessage["msg"])) {
                 <?php if($_SESSION['userIsAdm'] != 0): ?>
                         <div class="item"><a href="addPermission.php"><i class="fas fa-unlock-alt"></i>Autorizador</a></div>
                         <?php endif; ?>
-                <?php foreach ($menuarrays as $menu) : ?>
-                  
-
-                    <?php if ($menu->menu == "Gestão da Fonte 4") : ?>
-                        <div class="item"><a target="_blank" href="<?php $BASE_URL ?> /index.php"><i class="fas fa-dollar-sign">Gestão da Fonte 4</a></div>
-
-                    <?php elseif ($menu->menu == "Programação de Trabalho") : ?>
-                        <div class="item"><a target="_blank" href="https://programacao.ipem.sp.gov.br/"><i class="far fa-calendar-alt"></i>Programação de Trabalho</a></div>
-
-                    <?php elseif ($menu->menu == "Centro de Processos Permanentes") : ?>
-                        <div class="item"><a target="_blank" href="<?php $BASE_URL ?> /index.php"><i class="fas fa-address-book"></i>Centro de Processos Permanentes</a></div>
-
-                    <?php elseif ($menu->menu == "Monitoramento Segurança") : ?>
-                        <div class="item"><a target="_blank" href="http://10.15.16.211/antivirus/"><i class="fas fa-shield-alt"></i>Monitoramento de Segurança</a></div>
-
                         
-                        
-                        
-                        
-                    <?php endif; ?>
-                    <!-- aaa -->
+                <?php foreach ($menuarrays as $menu) : ?>       
+                        <div class="item"><a target="_blank" href="<?=$menu->link?>"><i class="<?=$menu->class?>"></i><?=$menu->menu?></a></div>
                 <?php endforeach; ?>
 
-                <div class="item"><a target="_blank" href="#"><i class="fas fa-address-book"></i>Módulo CPP</a></div>
+                <!-- <div class="item"><a target="_blank" href="http://10.15.16.211/antivirus/"><i class="fas fa-shield-alt"></i>Monitoramento de Segurança</a></div>
+
+                <div class="item"><a target="_blank" href="<?php $BASE_URL ?> /index.php"><i class="fas fa-address-book"></i>CPP</a></div>
+
+                <div class="item"><a target="_blank" href="https://programacao.ipem.sp.gov.br/"><i class="far fa-calendar-alt"></i>Programação de Trabalho</a></div>
+
+                <div class="item"><a target="_blank" href="<?php $BASE_URL ?> /index.php"><i class="fas fa-dollar-sign"></i>Gestão da Fonte 4</a></div>
                 
                 <div class="item"><a target="_blank" href="#"><i class="fas fa-clipboard-check"></i>Módulo da Qualidade</a></div>
 
@@ -148,7 +135,7 @@ if (!empty($flassMessage["msg"])) {
 
                 <div class="item"><a target="_blank" href="#"><i class="fas fa-chart-bar"></i>Ferramenta de BI</a></div>
 
-                <div class="item"><a target="_blank" href="https://fiscaliza.ipem.sp.gov.br/"><i class="fas fa-phone-volume"></i>Ouvidoria</a></div>
+                <div class="item"><a target="_blank" href="https://fiscaliza.ipem.sp.gov.br/"><i class="fas fa-phone-volume"></i>Ouvidoria</a></div> -->
 
                 <div class="item"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>
             </div>

@@ -7,10 +7,11 @@
 
 body {
     min-height: 100vh;
-    background: #eeeeee;
+    background-color: #eee;
     color: white;
     background-size: cover;
     background-position: center;
+    
 }
 
 label {
@@ -70,10 +71,10 @@ select {
 
 /* DIV MÃE de toda VIEW */
 #main-container {
-    background-color: #eee;
+    background-image: radial-gradient(#cacaca, #8588a8);
     color: black;
     padding: 40px;
-    height: 600px;
+    height: 100vh;
     
 }
 
@@ -471,7 +472,7 @@ header h1 {
 #painel{
 
     background-color: rgb(223, 230, 255);
-    height: 100vh;
+    height: 650px;
     border-radius: 2cqh;
     padding: 30px;
 }

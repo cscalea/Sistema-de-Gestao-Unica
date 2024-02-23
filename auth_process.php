@@ -21,17 +21,17 @@ $email = filter_input(INPUT_POST, "email");
 
 
 
-if ($type === "insertUser") {
-    $stmt = $conn->prepare("INSERT INTO users (name, login, email) VALUES (:name, :login, :email)");
-    $stmt->bindParam(":name", $name);
-    $stmt->bindParam(":login", $_SESSION['login']);
-    $stmt->bindParam(":email", $email);
-    $stmt->execute();
-    // $userDao->setUserNameToSession($_SESSION['login']);
-    // $userDao->setEmailUserToSession($_SESSION['login']);
-    $userDao->setIdUserToSession($_SESSION['login']);
-    $message->setMessage("Seja bem-vindo! ", "success", "index.php");
-}
+// if ($type === "insertUser") {
+//     $stmt = $conn->prepare("INSERT INTO users (name, login, email) VALUES (:name, :login, :email)");
+//     $stmt->bindParam(":name", $name);
+//     $stmt->bindParam(":login", $_SESSION['login']);
+//     $stmt->bindParam(":email", $email);
+//     $stmt->execute();
+//     // $userDao->setUserNameToSession($_SESSION['login']);
+//     // $userDao->setEmailUserToSession($_SESSION['login']);
+//     $userDao->setIdUserToSession($_SESSION['login']);
+//     $message->setMessage("Seja bem-vindo! ", "success", "index.php");
+// }
 
 //SE $TYPE === ? REALIZA TAL AÇÃO
 if ($type === "login") {
@@ -58,9 +58,9 @@ if ($type === "login") {
     //O MÉTODO VERIFICA SE ESTÁ NO AD O USUÁRIO E LOGA OU MOSTRA A MENSAGEM QUE NÃO EXISTE NO AD
 }
 
-if ($type === "updateUser") {
-    $userDao->updateUser($name, $email, $_SESSION['login']);
-    // $userDao->setUserNameToSession($_SESSION['login']);
-    // $userDao->SetEmailUserToSession($_SESSION['login']);
-    $message->setMessage("Dados alterados com sucesso", "success", "index.php");
-}
+// if ($type === "updateUser") {
+//     $userDao->updateUser($name, $email, $_SESSION['login']);
+//     // $userDao->setUserNameToSession($_SESSION['login']);
+//     // $userDao->SetEmailUserToSession($_SESSION['login']);
+//     $message->setMessage("Dados alterados com sucesso", "success", "index.php");
+// }

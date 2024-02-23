@@ -6,10 +6,6 @@ $userDao = new UserDAO($conn, $BASE_URL);
 $userDao->verifyAuth($_SESSION['login']);
 $userid = $userDao->setIdUserToSession($_SESSION['login']);
 $permission = new PermissionsDAO($conn, $BASE_URL);
-
-
-
-
 ?>
 
 <!-- image -->
@@ -34,19 +30,21 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
       <?php
 
       echo '<hr>';
-      echo 'Dados para fins de testes';
+      echo 'Dados do AD:'; 
       echo '<br>';
+      echo 'Login - '. $_SESSION['login'];
       echo '<br>';
-      echo '$_SESSION Login: ' . $_SESSION['login'];
+      echo 'email - ' . $_SESSION['mail'];
       echo '<br>';
-      echo '$_SESSION Nome: ' . $_SESSION['cn'];
+      echo 'Nome Completo - ' . $_SESSION['cn']; 
       echo '<br>';
-      echo '$_SESSION E-mail: ' . $_SESSION['mail'];
+      echo 'Usuário é ADM [1]sim [0]não - ' . $_SESSION['userIsAdm'];
       echo '<br>';
-      echo '$_SESSION ID do usuário: ' . $_SESSION['userid'];
-      echo '<br>';
-      echo '$_SESSION Usuário é Administrador - [1]sim [0]não: ' . $_SESSION['userIsAdm'];
- 
+     echo  'Login VBS: '. $_SESSION['scriptPath'];
+     echo '<br>';
+     echo  'Cargo: '. $_SESSION['dp'];
+     echo '<br>';
+     echo  'sla: '. $_SESSION['cp'];
 
       ?>
 
@@ -55,33 +53,29 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
       <div class="container">
         <div class="row">
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          <div class="col-12">
+            <h2>Centro de Desenvolvimento</h2>
+            <h5>Informações / gráficos sobre as atividades do setor</h5>
           </div>
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-          </div>
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-          </div>
+          
         </div>
+
         <hr>
+
         <div class="row">
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          <div class="col-12">
+            <h2>Centro de Suporte</h2>
+            <h5>Informações / gráficos sobre as atividades do setor</h5>
           </div>
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          
+        </div>
+<hr>
+        <div class="row">
+          <div class="col-12">
+            <h2>Centro de Infraestrutura de TI</h2>
+            <h5>Informações / gráficos sobre as atividades do setor</h5>
           </div>
-          <div class="col-4">
-            <h1>card...</h1>
-            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-          </div>
+          
         </div>
 
       </div>

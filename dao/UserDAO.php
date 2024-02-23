@@ -41,16 +41,22 @@ class UserDAO implements UserDAOInterface
                 $_SESSION['login'] = $login;
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
                 $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))";
-                $attributes = array("cn", "mail");
+                $attributes = array("cn", "mail", "scriptPath", "description", "profilePath");
                 $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
                 $entry = ldap_first_entry($ldapcon, $search_result);
                 $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
                 $email = ldap_get_values($ldapcon, $entry, "mail")[0];
+                $sp = ldap_get_values($ldapcon, $entry, "scriptPath")[0];
+                $dp = ldap_get_values($ldapcon, $entry, "description")[0];
+                $cp = ldap_get_values($ldapcon, $entry, "profilePath")[0];
 
+                $_SESSION['scriptPath'] = $sp;
                 $_SESSION['mail'] = $email;
                 $_SESSION['cn'] = $fullname;
+                $_SESSION['dp'] = $dp;
+                $_SESSION['cp'] = $cp;
                 $this->updateUser($fullname, $email, $user);
-                $this->message->setMessage("Seja Bem-vindo.", "success", "index.php");
+                header('location: index.php');
             } else {
                 $_SESSION['login'] = "";
                 // $this->message->setMessage("Usuário não encontrado no AD / Senha inválida", "error", "auth.php");
@@ -127,7 +133,8 @@ class UserDAO implements UserDAOInterface
     {
         $stmt1 = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
         $stmt1->bindParam(":login", $login);
-        $stmt1->fetch();
+        $stmt1->fetchAll();
+        $stmt1->execute();
         if ($stmt1->rowCount() < 1) {
 
 

@@ -46,6 +46,7 @@ class MenuDAO implements MenuDAOInterface
         $menu->id = $data["id"];
         $menu->menu = $data["menu"];
         $menu->link = $data["link"];
+        $menu->class = $data["class"];
         return $menu;
     }
 
@@ -68,7 +69,7 @@ class MenuDAO implements MenuDAOInterface
     //FUNCTION QUE LISTA TODOS OS MENUS DO SISTEMA SE O USUÁRIO FOR ADM
     public function listMenus2($login)
     {
-        $stmt = $this->conn->prepare(" SELECT m.menu, m.id, m.link FROM menus m 
+        $stmt = $this->conn->prepare(" SELECT m.menu, m.id, m.link, m.class FROM menus m 
         INNER JOIN permissions p 
         ON m.id = p.fk_idmenus
         INNER JOIN users u
