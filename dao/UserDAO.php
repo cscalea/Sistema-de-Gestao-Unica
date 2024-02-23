@@ -16,41 +16,56 @@ class UserDAO implements UserDAOInterface
         $this->message = new Message($url);
     }
 
-    
-
     //FUNCTION DE AUTENTICAR O USUÁRIO NO AD, RECEBE VIA FORMULÁRIO POST LOGIN E SENHA DA TELA DE LOGIN
     public function AuthenticateUser($login, $password)
     {
         $ldap_server = "10.15.16.191";
-        $dominio = "@ipem.sp"; //Dominio local ou global
-        $user = $login . $dominio;
+        $dominio = "ipem.sp"; //Dominio local ou global
+        $user = $login;
         $ldap_porta = "389";
         $ldap_pass   = $password;
+        $ldap_base_dn = "dc=ipem,dc=sp";
         $ldapcon = ldap_connect($ldap_server, $ldap_porta) or die("Could not connect to LDAP server.");
+
         if ($ldapcon) {
 
-            // binding to ldap server
-            //$ldapbind = ldap_bind($ldapconn, $user, $ldap_pass);
+            ldap_set_option($ldapcon, LDAP_OPT_PROTOCOL_VERSION, 3);
+            ldap_set_option($ldapcon, LDAP_OPT_REFERRALS, 0);
 
-            $bind = ldap_bind($ldapcon, $user, $ldap_pass);
+            $ldapbind = ldap_bind($ldapcon, "$user@$dominio", $_POST['password']);
 
             // verify binding
 
-            if ($bind) {
+            if ($ldapbind) {
                 //SE AS CREDENCIAIS FOREM VÁLIDAS, DIRECIONA PARA INDEX.PHP
                 $_SESSION['login'] = $login;
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
+                $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))";
+                $attributes = array("cn", "mail");
+                $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
+                $entry = ldap_first_entry($ldapcon, $search_result);
+                $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
+                $email = ldap_get_values($ldapcon, $entry, "mail")[0];
 
-
+                $_SESSION['mail'] = $email;
+                $_SESSION['cn'] = $fullname;
+                $this->updateUser($fullname, $email, $user);
+                $this->message->setMessage("Seja Bem-vindo.", "success", "index.php");
             } else {
                 $_SESSION['login'] = "";
-                $this->message->setMessage("Usuário não encontrado no AD / Senha inválida", "error", "auth.php");
-                
+                // $this->message->setMessage("Usuário não encontrado no AD / Senha inválida", "error", "auth.php");
+?>
+                <script>
+                    alert('Usuário não encontrado no AD e/ou senha inválida');
+                    history.back()
+                </script>
+<?php
+
             }
         }
     }
 
-    
+
     //FUNCTION QUE SETA O ID DO USUÁRIO LOGADO PARA A SESSION
     public function setIdUserToSession($login)
     {
@@ -62,42 +77,6 @@ class UserDAO implements UserDAOInterface
 
         $id = $str[0];
         $_SESSION['userid'] = $id;
-    }
-
-    public function setUserNameToSession($login)
-    {
-        $stmt = $this->conn->prepare("SELECT u.name FROM users u WHERE u.login = :login");
-        $stmt->bindParam(":login", $login);
-        $stmt->execute();
-        $str = $stmt->fetch();
-
-        $name = $str[0];
-        $_SESSION['username'] = $name;
-    }
-
-    public function setEmailUserToSession($login)
-    {
-        $stmt = $this->conn->prepare("SELECT email FROM users WHERE login = :login");
-        $stmt->bindParam(":login", $login);
-        $stmt->execute();
-
-        $str = $stmt->fetch();
-
-        $email = $str[0];
-        $_SESSION['useremail'] = $email;
-    }
-
-    public function verifyUser($login)
-    {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
-        $stmt->bindParam(":login", $login);
-        $stmt->execute();
-        if ($stmt->rowCount() < 1) {
-            $this->message->setMessage("Seja Bem-vindo. Este é seu primeiro acesso, conclua seu cadastro.", "success", "firstAccess.php");
-        } 
-        else {        
-            $this->message->setMessage("Seja Bem-vindo.", "success", "index.php");
-        }
     }
 
     //FUNCTION BUILDUSER, INSTANCIA O USUÁRIO E ATRIBUI OS DADOS RECEBIDOS VIA FORMULÁRIO POST AOS ATRIBUTOS DO OBJETO
@@ -129,13 +108,6 @@ class UserDAO implements UserDAOInterface
         return $users;
     }
 
-    //FAZ LOGOUT
-    public function logout()
-    {
-        session_destroy();
-        $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
-    }
-
     //FUNCTION QUE DIRECIONA O USUÁRIO PARA TELA DE LOGIN CASO NÃO EXISTA LOGIN NA SESSION
     public function verifyAuth($login)
     {
@@ -153,12 +125,59 @@ class UserDAO implements UserDAOInterface
 
     public function updateUser($name, $email, $login)
     {
-        $stmt = $this->conn->prepare("UPDATE users SET name = :name, email = :email where login = :login");
-        $stmt->bindParam(":name", $name);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":login", $login);
-        $stmt->execute();
+        $stmt1 = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
+        $stmt1->bindParam(":login", $login);
+        $stmt1->fetch();
+        if ($stmt1->rowCount() < 1) {
 
-       
+
+            $stmt = $this->conn->prepare("INSERT INTO users (name, login, email) VALUES (:name, :login, :email)");
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":login", $login);
+            $stmt->execute();
+        }
     }
+
+     //FAZ LOGOUT
+     public function logout()
+     {
+         session_destroy();
+         $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
+     }
+
+    // public function setUserNameToSession($login)
+    // {
+    //     $stmt = $this->conn->prepare("SELECT u.name FROM users u WHERE u.login = :login");
+    //     $stmt->bindParam(":login", $login);
+    //     $stmt->execute();
+    //     $str = $stmt->fetch();
+
+    //     $name = $str[0];
+    //     $_SESSION['username'] = $name;
+    // }
+
+    // public function setEmailUserToSession($login)
+    // {
+    //     $stmt = $this->conn->prepare("SELECT email FROM users WHERE login = :login");
+    //     $stmt->bindParam(":login", $login);
+    //     $stmt->execute();
+
+    //     $str = $stmt->fetch();
+
+    //     $email = $str[0];
+    //     $_SESSION['useremail'] = $email;
+    // }
+
+    // public function verifyUser($login)
+    // {
+    //     $stmt = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
+    //     $stmt->bindParam(":login", $login);
+    //     $stmt->execute();
+    //     if ($stmt->rowCount() < 1) {
+    //         $this->message->setMessage("Seja Bem-vindo. Este é seu primeiro acesso, conclua seu cadastro.", "success", "firstAccess.php");
+    //     } else {
+    //         $this->message->setMessage("Seja Bem-vindo.", "success", "index.php");
+    //     }
+    // }
 }

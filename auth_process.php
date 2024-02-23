@@ -27,8 +27,8 @@ if ($type === "insertUser") {
     $stmt->bindParam(":login", $_SESSION['login']);
     $stmt->bindParam(":email", $email);
     $stmt->execute();
-    $userDao->setUserNameToSession($_SESSION['login']);
-    $userDao->setEmailUserToSession($_SESSION['login']);
+    // $userDao->setUserNameToSession($_SESSION['login']);
+    // $userDao->setEmailUserToSession($_SESSION['login']);
     $userDao->setIdUserToSession($_SESSION['login']);
     $message->setMessage("Seja bem-vindo! ", "success", "index.php");
 }
@@ -42,9 +42,9 @@ if ($type === "login") {
         $userDao->AuthenticateUser($login, $password);
 
         if (!empty($_SESSION['login']) && $_SESSION['login'] != "") {
-            $userDao->verifyUser($_SESSION['login']);
-            $userDao->setUserNameToSession($_SESSION['login']);
-            $userDao->setEmailUserToSession($_SESSION['login']);
+            // $userDao->verifyUser($_SESSION['login']);
+            // $userDao->setUserNameToSession($_SESSION['login']);
+            // $userDao->setEmailUserToSession($_SESSION['login']);
             $userDao->setIdUserToSession($_SESSION['login']);
             $userAdm = $permissionDao->verifyIfUserHasAdm($_SESSION['userid']);
         }
@@ -60,7 +60,7 @@ if ($type === "login") {
 
 if ($type === "updateUser") {
     $userDao->updateUser($name, $email, $_SESSION['login']);
-    $userDao->setUserNameToSession($_SESSION['login']);
-    $userDao->SetEmailUserToSession($_SESSION['login']);
+    // $userDao->setUserNameToSession($_SESSION['login']);
+    // $userDao->SetEmailUserToSession($_SESSION['login']);
     $message->setMessage("Dados alterados com sucesso", "success", "index.php");
 }

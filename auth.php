@@ -42,7 +42,7 @@ $message = new Message($BASE_URL);
                         <i class="fa fa-exclamation-circle" title="Digite seu login de rede" aria-hidden="true"></i>
                        
 
-                        <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Digite seu login">
+                        <input type="text" required class="form-control" title="Preencha este campo" id="inputLogin" name="login" placeholder="Digite seu login">
                     </div>
                     <div class="form-group">
                         <!-- CAMPO SENHA TELA DE LOGIN -->
@@ -51,7 +51,7 @@ $message = new Message($BASE_URL);
 
 
                         <div id="psw">
-                        <input type="password" class="form-control" id="inputPass" name="password" placeholder="Digite seu senha">
+                        <input type="password" required class="form-control" id="inputPass" name="password" placeholder="Digite seu senha">
                         <i id="openeye" onclick="mostrarSenha()" class="fa fa-eye" aria-hidden="true"></i>
                         
                         </div>

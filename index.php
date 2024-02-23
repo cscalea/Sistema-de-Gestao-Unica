@@ -4,123 +4,126 @@ require_once("dao/UserDAO.php");
 require_once("dao/PermissionsDAO.php");
 $userDao = new UserDAO($conn, $BASE_URL);
 $userDao->verifyAuth($_SESSION['login']);
-// $userid = $userDao->setIdUserToSession($_SESSION['login']);
+$userid = $userDao->setIdUserToSession($_SESSION['login']);
 $permission = new PermissionsDAO($conn, $BASE_URL);
+
+
 
 
 ?>
 
 <!-- image -->
 <div id="main-container" class="container-fluid">
-<div id="topoindex">
-<img id="imagem" src="img/IPEM2.png" alt="IPEM"><p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
-</div>
-  
-    <hr>
-  
-    <div class="offset-md-1 col-md-10">
+  <div id="topoindex">
+    <img id="imagem" src="img/IPEM2.png" alt="IPEM">
+    <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
+  </div>
+
+  <hr>
+
+  <div class="offset-md-1 col-md-10">
     <div id="painel">
-     
-      
-    <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['username']) ?></h5>
-    
-  
-
-    
-
-  <?php
-  
-   echo '<hr>';
-  echo 'Dados para fins de testes';
-  echo '<br>';
-  echo '<br>';
-echo '$_SESSION Login: ' . $_SESSION['login'];
-echo '<br>';
-echo '$_SESSION Nome: ' . $_SESSION['username'];
-echo '<br>';
-echo '$_SESSION E-mail: ' . $_SESSION['useremail'];
-echo '<br>';
-echo '$_SESSION ID do usuário: ' . $_SESSION['userid'];
-echo '<br>';
-echo '$_SESSION Usuário é Administrador - [1]sim [0]não: ' . $_SESSION['userIsAdm'];
 
 
-    ?>
-    
-  
-<hr>
+      <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['cn']) ?></h5>
 
-<div class="container">
+
+
+
+
+      <?php
+
+      echo '<hr>';
+      echo 'Dados para fins de testes';
+      echo '<br>';
+      echo '<br>';
+      echo '$_SESSION Login: ' . $_SESSION['login'];
+      echo '<br>';
+      echo '$_SESSION Nome: ' . $_SESSION['cn'];
+      echo '<br>';
+      echo '$_SESSION E-mail: ' . $_SESSION['mail'];
+      echo '<br>';
+      echo '$_SESSION ID do usuário: ' . $_SESSION['userid'];
+      echo '<br>';
+      echo '$_SESSION Usuário é Administrador - [1]sim [0]não: ' . $_SESSION['userIsAdm'];
+ 
+
+      ?>
+
+
+      <hr>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+          <div class="col-4">
+            <h1>card...</h1>
+            <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- <div class="container">
   <div class="row">
       <div class="col-4">
-    <h1>card...</h1>
-    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+    <h1>IPEM</h1>
+    <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
       <div class="col-4">
-      <h1>card...</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
       <div class="col-4">
-      <h1>card...</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      <h1>IPEM</h1>
+      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
   </div>
   <hr>
   <div class="row">
       <div class="col-4">
-    <h1>card...</h1>
-    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>card...</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>card...</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-  </div>
-  
-</div>
-
-</div>
-</div>
-
-
-<!-- <div class="container">
-  <div class="row">
-      <div class="col-4">
     <h1>IPEM</h1>
-    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+    <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
       <div class="col-4">
       <h1>IPEM</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
       <div class="col-4">
       <h1>IPEM</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-  </div>
-  <hr>
-  <div class="row">
-      <div class="col-4">
-    <h1>IPEM</h1>
-    <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?=$BASE_URL?>img/ipem-azul.png">
+      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
   </div>
   
 </div> -->
 
-  
+
 </div>
 </div>
 

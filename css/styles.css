@@ -7,7 +7,7 @@
 
 body {
     min-height: 100vh;
-    background: #eee;
+    background: #eeeeee;
     color: white;
     background-size: cover;
     background-position: center;
@@ -256,7 +256,7 @@ select {
     overflow-y: auto;
     transition: 0.6s ease;
     transition-property: left;
-    z-index: 1;
+    z-index: 3;
 }
 
 header {
@@ -276,11 +276,14 @@ header img {
     color: #2273c5;
 }
 
+
 #openMenu:hover{
     transition: .2s;
     transform: scale(1.2);
     color: #2273c5;
+
 }
+
 
 /* Nome do Usuário Logado */
 #profileMenu a {
