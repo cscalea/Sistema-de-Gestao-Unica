@@ -30,6 +30,12 @@ require_once("templates/header.php");
             <input type="Setor" disabled required pattern="[A-Za-z, ]+" title="Digite um setor válido" id="inputSetor" name="setor" value="setor">
 
         </div>
+        <div class="form-group">
+            <label for="cargo">Cargo:</label>
+            <input type="cargo" disabled required pattern="[A-Za-z, ]+" title="Digite um cargo válido" id="inputcargo" name="cargo" value=" <?php echo $_SESSION['dp'] ?>">
+
+        </div>
+
         <button type="submit" class="card-btn">Alterar</button>
 
 </form>

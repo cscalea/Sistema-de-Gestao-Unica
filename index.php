@@ -9,6 +9,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 ?>
 
 <!-- image -->
+
 <div id="main-container" class="container-fluid">
   <div id="topoindex">
     <img id="imagem" src="img/IPEM2.png" alt="IPEM">
@@ -26,9 +27,8 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 
 
-
+<div style="font-size: 12px; color: blue; text-align: center"id="oi">
       <?php
-
       echo '<hr>';
       echo 'Dados do AD:'; 
       echo '<br>';
@@ -38,16 +38,15 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
       echo '<br>';
       echo 'Nome Completo - ' . $_SESSION['cn']; 
       echo '<br>';
-      echo 'Usuário é ADM [1]sim [0]não - ' . $_SESSION['userIsAdm'];
-      echo '<br>';
+      // echo 'Usuário é ADM [1]sim [0]não - ' . $_SESSION['userIsAdm'];
+      // echo '<br>';
      echo  'Login VBS: '. $_SESSION['scriptPath'];
      echo '<br>';
      echo  'Cargo: '. $_SESSION['dp'];
      echo '<br>';
-     echo  'sla: '. $_SESSION['cp'];
-
+     echo  'Setor: '. $_SESSION['cp'];
       ?>
-
+</div>
 
       <hr>
 

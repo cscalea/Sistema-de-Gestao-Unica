@@ -127,6 +127,10 @@ select {
     width: 85%;   
     border-radius: 8px;
 }
+#inputLogin:focus, #inputPass:focus{
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
 
 #openeye {
     font-size: 18px;
@@ -173,7 +177,7 @@ select {
 /* EDIT PROFILE FORM */
 
 #create-form-edit{
-    width: 500px;
+    width: 540px;
     height: 460px;
     margin-top: 60px;
     margin-left: 30%;
@@ -275,8 +279,13 @@ header img {
     transition: .2s;
     transform: scale(1.2);
     color: #2273c5;
+
 }
 
+#menu-Btn{
+    margin-bottom: 20px;
+    z-index: 3;
+}
 
 #openMenu:hover{
     transition: .2s;
@@ -332,18 +341,50 @@ header h1 {
 
 }
 
+.menu-btn i{
+    color: white;
+}
+
 .menu-btn {
     position: absolute;
     color: rgb(0, 0, 0);
     font-size: 35px;
     cursor: pointer;
-    margin: 25px;
+  
+    z-index: 2;
+    margin-bottom: 20px;
+    margin-left: 30px;
 }
 
 .menu .item {
     position: relative;
     cursor: pointer;
 }
+
+.menu .item::before {
+   
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    
+}
+
+.menu .item:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+  .menu .item::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 3 0 3;
+    background: hsl(197, 99%, 49%);
+    z-index: -1;
+    transition: transform .3s ease-in-out;
+  }
+
 
 .menu .item a {
     color: #fff;
@@ -354,13 +395,13 @@ header h1 {
     line-height: 38px;
 }
 
-.menu .item a:hover {
+/* .menu .item a:hover {
     text-shadow: #1e1e20;
     background-color: #9fa0a1;
     opacity: 60%;
     color: rgb(0, 0, 0);
     font-style: bold;
-}
+} */
 
 .item i {
     margin-right: 8px;
@@ -456,7 +497,7 @@ header h1 {
     background-color: white;
     height: 37px;
     padding: 6px;
-    width: 298px;
+    width: 320px;
     border: .5px solid black;
 }
 #lblEmail{
@@ -476,6 +517,60 @@ header h1 {
     border-radius: 2cqh;
     padding: 30px;
 }
+
+#main-navbar {
+    background-color: #003366;
+    height: 50px;
+  }
+ 
+  #navbar ul li a:hover{
+    border-bottom: 2px solid #f5c518;
+    transition: 0s;
+    
+  }
+  
+  #navbar ul li a:hover{
+    background-color: rgb(56, 56, 56);
+    
+    
+  }
+  .navbar-nav {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  #quit{
+    justify-content: end;
+    align-items: center;
+  }
+
+  #quit:hover{
+    text-decoration-line: none;
+    color: red;
+    transition: .2s;
+    transform: scale(1.1);
+    
+  }
+
+  #quit i{
+   margin-top: 1px;
+   padding: 5px;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    color: #FFF;
+    transition: .5s;
+    text-align: center;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #999;
+  }
+
+  #headerTop{
+    height: 25px;
+  }
+
 
 /*  @@@@@@@@@@@@@@@@@@     FOOTER     @@@@@@@@@@@@@@@@@@  */
 #footer {

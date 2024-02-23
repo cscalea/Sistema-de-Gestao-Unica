@@ -78,11 +78,31 @@ if (!empty($flassMessage["msg"])) {
         if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
 
 
+<header id="headerTop">
+     <!-- MENU BUTTON -->
+     <div class="menu-btn">
 
-        <!-- MENU BUTTON -->
-        <div class="menu-btn">
-            <i id="openMenu" class="fas fa-bars"></i>
-        </div>
+        
+<i id="openMenu" class="fas fa-bars"></i>
+</div>
+<nav id="main-navbar" class="navbar navbar-expand-lg">
+<ul class="navbar-nav">
+          
+           
+            <li class="nav-item">
+              <a target="_blank" href="<?=$BASE_URL?>img/pmd.png" class="nav-link">Plano de Metas DTIN - 2024</a>
+            </li>
+            
+            
+            
+            
+       
+        </ul>
+        <a id="quit" style="color: white; display: flex; text-align: center;" href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
+</nav>
+
+</header>
+       
         <div class="side-bar">
             <!-- HEADER SECTION -->
             <header>

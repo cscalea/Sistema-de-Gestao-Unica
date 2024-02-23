@@ -41,15 +41,15 @@ class UserDAO implements UserDAOInterface
                 $_SESSION['login'] = $login;
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
                 $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))";
-                $attributes = array("cn", "mail", "scriptPath", "description", "profilePath");
+                $attributes = array("cn", "mail", "scriptPath", "description", "department");
                 $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
                 $entry = ldap_first_entry($ldapcon, $search_result);
                 $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
                 $email = ldap_get_values($ldapcon, $entry, "mail")[0];
                 $sp = ldap_get_values($ldapcon, $entry, "scriptPath")[0];
                 $dp = ldap_get_values($ldapcon, $entry, "description")[0];
-                $cp = ldap_get_values($ldapcon, $entry, "profilePath")[0];
-
+                $cp = ldap_get_values($ldapcon, $entry, "department")[0];
+                
                 $_SESSION['scriptPath'] = $sp;
                 $_SESSION['mail'] = $email;
                 $_SESSION['cn'] = $fullname;
