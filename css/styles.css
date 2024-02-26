@@ -11,7 +11,7 @@ body {
     color: white;
     background-size: cover;
     background-position: center;
-    
+
 }
 
 label {
@@ -75,7 +75,6 @@ select {
     color: black;
     padding: 40px;
     height: 100vh;
-    
 }
 
 /* AUTH.PHP - ESTILIZAÇÕES DA TELA DE LOGIN */
@@ -161,7 +160,8 @@ select {
     border-radius: 1cqh;
     width: 25%;
     margin-left: 36%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    margin-top: 20px;
 }
 
 #loginBtn:hover {
@@ -253,9 +253,9 @@ select {
 
 .side-bar {
     background-color: rgb(3, 5, 36);
-    width: 280px;
+    width: 330px;
     height: 100vh;
-    left: -280px;
+    left: -330px;
     position: fixed;
     top: 0;
     overflow-y: auto;
@@ -272,7 +272,7 @@ header {
 header img {
     width: 140px;
     margin: 15px;
-    margin-left: 68px;
+    margin-left: 102px;
 }
 
 #closeMenu:hover{
@@ -444,7 +444,7 @@ header h1 {
 
 #imagem {
     width: 300px;
-    margin-left: 38%;
+    margin-left: 42%;
 }
 
 /*  @@@@@@@@@@@@@@@@@@     ALTERAR PERMISSOES     @@@@@@@@@@@@@@@@@@  */
@@ -487,8 +487,7 @@ header h1 {
 }
 
 #topoindex p {
-    display: flex;
-    justify-content: space-evenly;
+    margin-left: 35%;
     margin-top: 6px;
     font-size: 20px;
 }
@@ -571,6 +570,7 @@ header h1 {
     height: 25px;
   }
 
+ 
 
 /*  @@@@@@@@@@@@@@@@@@     FOOTER     @@@@@@@@@@@@@@@@@@  */
 #footer {

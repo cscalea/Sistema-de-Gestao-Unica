@@ -54,7 +54,7 @@ class MenuDAO implements MenuDAOInterface
     //FUNCTION QUE LISTA TODOS OS MENUS DO SISTEMA
     public function listMenus()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM menus");
+        $stmt = $this->conn->prepare("SELECT * FROM menus ORDER BY menu ASC");
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $menusArray = $stmt->fetchAll();

@@ -61,7 +61,7 @@ if (!empty($flassMessage["msg"])) {
     <!-- Font Awesome -->
 
         <!-- JAVASCRIPT -->
-    <script src="../js/password.js"></script>
+    <script src="js/password.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- CSS do projeto -->
@@ -98,7 +98,7 @@ if (!empty($flassMessage["msg"])) {
             
        
         </ul>
-        <a id="quit" style="color: white; display: flex; text-align: center;" href="../logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
+        <a id="quit" style="color: white; display: flex; text-align: center;" href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
 </nav>
 
 </header>
@@ -111,7 +111,7 @@ if (!empty($flassMessage["msg"])) {
                     <i id="closeMenu"class="fas fa-times"></i>
                 </div>
                 <!-- image -->
-                <img src="img/ipem.png" alt="IPEM">
+                <img id="imgHeader" src="img/ipem.png" alt="IPEM">
                 <!-- logo -->
                 <h1>Sistema Único de Gestão</h1>
             </header>
@@ -159,6 +159,7 @@ if (!empty($flassMessage["msg"])) {
 
                 <div class="item"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>
             </div>
+           
        
            
         </div>

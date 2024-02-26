@@ -8,7 +8,7 @@
       
       <div class="logo-rodape">
         <a href="#">
-            <img id="imgfooter" src="../img/ipem.png"  alt="site do Sistema de Gestão Corporativa - IPEM SP"  width="100%" height="100%">
+            <img id="imgfooter" src="img/ipem.png"  alt="site do Sistema de Gestão Corporativa - IPEM SP"  width="100%" height="100%">
             
           </a>
           <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>

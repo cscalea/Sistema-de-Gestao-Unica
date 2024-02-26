@@ -45,6 +45,8 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
      echo  'Cargo: '. $_SESSION['dp'];
      echo '<br>';
      echo  'Setor: '. $_SESSION['cp'];
+     echo '<br>';
+     echo 'ID do usuário: ' . $_SESSION['uid'];
       ?>
 </div>
 
@@ -122,5 +124,5 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 
 <?php
-require_once("../templates/footer.php");
+require_once("templates/footer.php");
 ?>

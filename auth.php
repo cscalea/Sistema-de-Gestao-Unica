@@ -27,7 +27,8 @@ $message = new Message($BASE_URL);
                     <!-- TEXTO DE LOGAR EM CIMA DO FORM DE LOGIN -->
 
                     <!-- FORMULÁRIO DE LOGIN COM METHOD POST, ACTION QUE DIRECIONA-->
-                    <form id="create-form-login" action="<?= $BASE_URL ?>auth_process.php" method="POST">
+                    <form id="create-form-login" action="<?= $BASE_URL ?>auth_process.php" method="POST" onsubmit="return validarCampo()">
+
                         <img src="<?= $BASE_URL ?>img/ipemetro.png" alt="IPEM" id="img-ipem-login">
                         <h2 id="txt-form-login">Sistema Único de Gestão</h2>
                         <hr>
@@ -38,16 +39,19 @@ $message = new Message($BASE_URL);
                             <label for="login">Login</label>
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <i class="fa fa-exclamation-circle" title="Digite seu login de rede" aria-hidden="true"></i>
-                            <input type="text" required class="form-control" title="Preencha este campo" id="inputLogin" name="login" placeholder="Digite seu login">
+                            <input type="text" required class="form-control" title="Preencha este campo" onkeyup="validarTexto(this)" id="inputLogin" name="login" placeholder="Digite seu login">
                         </div>
                         <div class="form-group">
                             <!-- CAMPO SENHA TELA DE LOGIN -->
                             <label for="password">Senha</label>
                             <i class="fa fa-key" aria-hidden="true"></i>
                             <div id="psw">
-                                <input type="password" required class="form-control" id="inputPass" name="password" placeholder="Digite seu senha">
+                                <input type="password" required class="form-control"  onkeypress="verificarCapsLock(event)" id="inputPass" name="password" placeholder="Digite seu senha">
                                 <i id="openeye" onclick="mostrarSenha()" class="fa fa-eye" aria-hidden="true"></i>
+                                
                             </div>
+                            <div id="mensagemCapsLock" style="display: none;
+            color: red; margin-left: 28px; margin-top: 10px;">CapsLock ON</div>
                         </div>
                         <!-- BOTÃO SUBMIT QUE ACIONA A AÇÃO DO FORM E JOGA PARA AUTH_PROCESS.PHP -->
                         <input type="submit" id="loginBtn" value="Entrar">
@@ -60,5 +64,29 @@ $message = new Message($BASE_URL);
                 
             </div> -->
     </div>
+    
 
 <?php endif; ?>
+   
+<script>
+     function validarTexto(input) {
+            var regex = /^[a-zA-Z]*$/; // Expressão regular para aceitar apenas letras
+            if (!regex.test(input.value)) {
+                input.value = input.value.replace(/[^a-zA-Z]/g, ''); // Remove números do valor
+                alert("Este campo aceita apenas letras.");
+            }
+        }
+    </script>
+
+<script>
+        function verificarCapsLock(event) {
+            var capsLockAtivado = event.getModifierState && event.getModifierState('CapsLock');
+            var mensagemCapsLock = document.getElementById('mensagemCapsLock');
+
+            if (capsLockAtivado) {
+                mensagemCapsLock.style.display = 'block';
+            } else {
+                mensagemCapsLock.style.display = 'none';
+            }
+        }
+    </script>
