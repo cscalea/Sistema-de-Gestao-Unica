@@ -122,5 +122,5 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 
 <?php
-require_once("templates/footer.php");
+require_once("../templates/footer.php");
 ?>

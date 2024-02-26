@@ -1,7 +1,7 @@
 <?php
 require_once("model/message.php");
 require_once("model/user.php");
-require_once("globals.php");
+require_once("config/globals.php");
 
 class UserDAO implements UserDAOInterface
 {
@@ -49,7 +49,7 @@ class UserDAO implements UserDAOInterface
                 $sp = ldap_get_values($ldapcon, $entry, "scriptPath")[0];
                 $dp = ldap_get_values($ldapcon, $entry, "description")[0];
                 $cp = ldap_get_values($ldapcon, $entry, "department")[0];
-                
+
                 $_SESSION['scriptPath'] = $sp;
                 $_SESSION['mail'] = $email;
                 $_SESSION['cn'] = $fullname;

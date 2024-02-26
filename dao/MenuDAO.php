@@ -2,7 +2,7 @@
 require_once("model/message.php");
 require_once("model/user.php");
 require_once("model/menu.php");
-require_once("globals.php");
+require_once("config/globals.php");
 
 class MenuDAO implements MenuDAOInterface
 {
