@@ -18,11 +18,11 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
   <hr>
 
-  <div class="offset-md-1 col-md-10">
+  <div class="col-md-12">
     <div id="painel">
 
 
-      <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['cn']) ?></h5>
+      <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['fullname']) ?></h5>
 
 
 
@@ -36,15 +36,15 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
       echo '<br>';
       echo 'email - ' . $_SESSION['mail'];
       echo '<br>';
-      echo 'Nome Completo - ' . $_SESSION['cn']; 
+      echo 'Nome Completo - ' . $_SESSION['fullname']; 
       echo '<br>';
       // echo 'Usuário é ADM [1]sim [0]não - ' . $_SESSION['userIsAdm'];
       // echo '<br>';
      echo  'Login VBS: '. $_SESSION['scriptPath'];
      echo '<br>';
-     echo  'Cargo: '. $_SESSION['dp'];
+     echo  'Cargo: '. $_SESSION['cargo'];
      echo '<br>';
-     echo  'Setor: '. $_SESSION['cp'];
+     echo  'Setor: '. $_SESSION['dpto'];
      echo '<br>';
      echo 'ID do usuário: ' . $_SESSION['uid'];
       ?>

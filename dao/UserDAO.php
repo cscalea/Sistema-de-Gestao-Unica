@@ -41,21 +41,21 @@ class UserDAO implements UserDAOInterface
                 $_SESSION['login'] = $login;
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
                 $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))";
-                $attributes = array("cn", "mail", "scriptPath", "description", "department", "distinguishedname");
+                $attributes = array("cn", "mail", "scriptPath", "title", "department", "distinguishedname");
                 $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
                 $entry = ldap_first_entry($ldapcon, $search_result);
                 $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
                 $email = ldap_get_values($ldapcon, $entry, "mail")[0];
                 $sp = ldap_get_values($ldapcon, $entry, "scriptPath")[0];
-                $dp = ldap_get_values($ldapcon, $entry, "description")[0];
-                $cp = ldap_get_values($ldapcon, $entry, "department")[0];
+                $cargo = ldap_get_values($ldapcon, $entry, "title")[0];
+                $dpto = ldap_get_values($ldapcon, $entry, "department")[0];
                 $uid = ldap_get_values($ldapcon, $entry, "distinguishedname")[0];
 
                 $_SESSION['scriptPath'] = $sp;
                 $_SESSION['mail'] = $email;
-                $_SESSION['cn'] = $fullname;
-                $_SESSION['dp'] = $dp;
-                $_SESSION['cp'] = $cp;
+                $_SESSION['fullname'] = $fullname;
+                $_SESSION['cargo'] = $cargo;
+                $_SESSION['dpto'] = $dpto;
                 $_SESSION['uid'] = $uid;
                 $this->updateUser($fullname, $email, $user);
                 header('location: index.php');

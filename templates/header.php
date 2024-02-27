@@ -20,8 +20,8 @@ function getUserLogin(){
     $_SESSION['windowsuser'] = $wuser;
 
 // pega o primeiro nome do usuário logado para mostrar no MENU
-if(isset($_SESSION['cn'])){
-    $n = explode(" ", $_SESSION['cn']);
+if(isset($_SESSION['fullname'])){
+    $n = explode(" ", $_SESSION['fullname']);
     $nome = $n[0];
 }
 
@@ -98,7 +98,9 @@ if (!empty($flassMessage["msg"])) {
             
        
         </ul>
+        <a href="<?php $BASE_URL?>editProfile.php"><p id="nameHeader" style="color: white; display: flex; text-align: center; margin-right: 8px; margin-top: 16px;"><?php echo $nome?></p></a>
         <a id="quit" style="color: white; display: flex; text-align: center;" href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
+        
 </nav>
 
 </header>

@@ -7,7 +7,7 @@
 
 body {
     min-height: 100vh;
-    background-color: #eee;
+    background-color: rgb(223, 230, 255);
     color: white;
     background-size: cover;
     background-position: center;
@@ -510,7 +510,6 @@ header h1 {
 }
 
 #painel{
-
     background-color: rgb(223, 230, 255);
     height: 650px;
     border-radius: 2cqh;
@@ -570,6 +569,10 @@ header h1 {
     height: 25px;
   }
 
+  #nameHeader:hover{
+    transition: .2s;
+    transform: scale(1.1);
+  }
  
 
 /*  @@@@@@@@@@@@@@@@@@     FOOTER     @@@@@@@@@@@@@@@@@@  */
