@@ -6,21 +6,21 @@ require_once("dao/MenuDAO.php");
 require_once("model/message.php");
 
 $message = new Message($BASE_URL);
-if (isset($_SESSION['userIsAdm']) && $_SESSION['userIsAdm'] == 0) {
-    $message->setMessage("Você não tem permissão para acessar essa página.", "back", "index.php");
-}
+// if (isset($_SESSION['userIsAdm']) && $_SESSION['userIsAdm'] == 0) {
+//     $message->setMessage("Você não tem permissão para acessar essa página.", "back", "index.php");
+// }
 /* INSTANCIAÇÃO DOS OBJETOS User e Menu, para podermos fazer a utilização dos métodos dessas classes */
 $userDao = new UserDAO($conn, $BASE_URL);
 $menuDao = new MenuDAO($conn, $BASE_URL);
 
 /* MÉTODO DE VERIFICAÇÃO DE AUTENTICAÇÃO - IMPEDE QUE O USUÁRIO ACESSE A PÁGINA DIRETAMENTE PELA URL SEM LOGAR */
 $userDao->verifyAuth($_SESSION['login']);
-$userDao->redirectPermissionPage();
+// $userDao->redirectPermissionPage();
 /* METODOS QUE LISTAM OS MENUS E OS USERS CONFORME PERMISSÃO PARA O USUÁRIO ADMINISTRADOR DO MÓDULO ADICIONAR OU REMOVER ACESSO DO FUNCIONÁRIO */
 $arrayUsers = $userDao->listUsers();
 
 /* MÉTODO PARA LISTAR APENAS OS MENUS EM QUE O USUÁRIO LOGADO É ADMINISTRADOR, PARA REMOVER OU ADICIONAR ACESSO DO FUNCIONÁRIO */
-$arrayMenus2 = $menuDao->listMenus2($_SESSION['login']);
+// $arrayMenus2 = $menuDao->listMenus2($_SESSION['login']);
 ?>
 
 <div id="main-container" class="container-fluid">

@@ -67,22 +67,22 @@ class MenuDAO implements MenuDAOInterface
 
 
     //FUNCTION QUE LISTA TODOS OS MENUS DO SISTEMA SE O USUÁRIO FOR ADM
-    public function listMenus2($login)
-    {
-        $stmt = $this->conn->prepare(" SELECT m.menu, m.id, m.link, m.class FROM menus m 
-        INNER JOIN permissions p 
-        ON m.id = p.fk_idmenus
-        INNER JOIN users u
-        ON p.fk_idusers = u.id
-        WHERE p.adm = 1 AND u.login = :login AND m.menu != 'autorizador';");
-        $stmt->bindParam(":login", $login);
-        $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            $menusArray = $stmt->fetchAll();
-            foreach ($menusArray as $menu) {
-                $menus[] = $this->buildMenu($menu);
-            }
-        }
-        return $menus;
-    }
+    // public function listMenus2($login)
+    // {
+    //     $stmt = $this->conn->prepare(" SELECT m.menu, m.id, m.link, m.class FROM menus m 
+    //     INNER JOIN permissions p 
+    //     ON m.id = p.fk_idmenus
+    //     INNER JOIN users u
+    //     ON p.fk_idusers = u.id
+    //     WHERE p.adm = 1 AND u.login = :login AND m.menu != 'autorizador';");
+    //     $stmt->bindParam(":login", $login);
+    //     $stmt->execute();
+    //     if ($stmt->rowCount() > 0) {
+    //         $menusArray = $stmt->fetchAll();
+    //         foreach ($menusArray as $menu) {
+    //             $menus[] = $this->buildMenu($menu);
+    //         }
+    //     }
+    //     return $menus;
+    // }
 }

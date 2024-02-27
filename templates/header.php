@@ -52,6 +52,9 @@ if (!empty($flassMessage["msg"])) {
 <html lang="en">
 
 <head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Único de Gestão</title>
@@ -126,8 +129,9 @@ if (!empty($flassMessage["msg"])) {
                 <div class="item"><a href="<?php $BASE_URL ?>index.php"><i class="fa fa-home"></i>Home</a></div>
 
                 <?php if($_SESSION['userIsAdm'] != 0): ?>
-                        <div class="item"><a href="addPermission.php"><i class="fas fa-unlock-alt"></i>Autorizador</a></div>
+                        
                         <?php endif; ?>
+                        <div class="item"><a href="addPermission.php"><i class="fas fa-unlock-alt"></i>Autorizador</a></div>
                         
                 <?php foreach ($menuarrays as $menu) : ?>       
                         <div class="item"><a target="_blank" href="<?=$menu->link?>"><i class="<?=$menu->class?>"></i><?=$menu->menu?></a></div>

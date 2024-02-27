@@ -11,17 +11,17 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 <!-- image -->
 
 <div id="main-container" class="container-fluid">
-  <div id="topoindex">
-    <img id="imagem" src="img/IPEM2.png" alt="IPEM">
-    <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
-  </div>
+  
 
   <hr>
 
   <div class="col-md-12">
     <div id="painel">
-
-
+    <div id="topoindex">
+    <img id="imagem" src="img/IPEM2.png" alt="IPEM">
+    <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
+  </div>
+<hr>
       <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['fullname']) ?></h5>
 
 
@@ -47,6 +47,8 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
      echo  'Setor: '. $_SESSION['dpto'];
      echo '<br>';
      echo 'ID do usuário: ' . $_SESSION['uid'];
+     echo '<br>';
+     echo 'token para autenticar em outros sistemas: ' . $_SESSION['auth_token']
       ?>
 </div>
 

@@ -51,6 +51,9 @@ class UserDAO implements UserDAOInterface
                 $dpto = ldap_get_values($ldapcon, $entry, "department")[0];
                 $uid = ldap_get_values($ldapcon, $entry, "distinguishedname")[0];
 
+                $token = bin2hex(random_bytes(16));
+                $_SESSION['auth_token'] = $token;
+
                 $_SESSION['scriptPath'] = $sp;
                 $_SESSION['mail'] = $email;
                 $_SESSION['fullname'] = $fullname;

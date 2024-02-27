@@ -511,9 +511,10 @@ header h1 {
 
 #painel{
     background-color: rgb(223, 230, 255);
-    height: 650px;
+    height: 750px;
     border-radius: 2cqh;
     padding: 30px;
+    display: grid;
 }
 
 #main-navbar {
@@ -603,3 +604,16 @@ header h1 {
 }
 
 /* adicionei um comentário */
+
+
+
+
+
+
+.container{
+    margin-top: 5%;
+    width: 1000px;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+}
