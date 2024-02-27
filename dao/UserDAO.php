@@ -72,8 +72,6 @@ class UserDAO implements UserDAOInterface
             }
         }
     }
-
-
     //FUNCTION QUE SETA O ID DO USUÁRIO LOGADO PARA A SESSION
     public function setIdUserToSession($login)
     {
@@ -154,39 +152,4 @@ class UserDAO implements UserDAOInterface
          session_destroy();
          $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
      }
-
-    // public function setUserNameToSession($login)
-    // {
-    //     $stmt = $this->conn->prepare("SELECT u.name FROM users u WHERE u.login = :login");
-    //     $stmt->bindParam(":login", $login);
-    //     $stmt->execute();
-    //     $str = $stmt->fetch();
-
-    //     $name = $str[0];
-    //     $_SESSION['username'] = $name;
-    // }
-
-    // public function setEmailUserToSession($login)
-    // {
-    //     $stmt = $this->conn->prepare("SELECT email FROM users WHERE login = :login");
-    //     $stmt->bindParam(":login", $login);
-    //     $stmt->execute();
-
-    //     $str = $stmt->fetch();
-
-    //     $email = $str[0];
-    //     $_SESSION['useremail'] = $email;
-    // }
-
-    // public function verifyUser($login)
-    // {
-    //     $stmt = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
-    //     $stmt->bindParam(":login", $login);
-    //     $stmt->execute();
-    //     if ($stmt->rowCount() < 1) {
-    //         $this->message->setMessage("Seja Bem-vindo. Este é seu primeiro acesso, conclua seu cadastro.", "success", "firstAccess.php");
-    //     } else {
-    //         $this->message->setMessage("Seja Bem-vindo.", "success", "index.php");
-    //     }
-    // }
 }

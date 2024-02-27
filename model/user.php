@@ -19,9 +19,5 @@
         public function redirectPermissionPage(); // MÉTODO QUE DIRECIONA O USUÁRIO PARA A HOME CASO O MESMO TENTE ACESSAR A TELA DE ADICIONAR MENUS DIRETAMENTE PELA URL       
         public function logout(); // MÉTODO PARA FAZER O LOGOUT E DESTRUIR A SESSION
         public function updateUser($name, $email, $login); // MÉTODO PARA ALTERAR DADOS DO USUÁRIO  
-                      
-        // public function setUserNameToSession($login); //MÉTODO QUE DEFINE O NOME DO USUÁRIO PARA A VARIÁVEL GLOBAL $_SESSION[username];
-        // public function setEmailUserToSession($login); //MÉTODO PARA PEGAR O EMAIL DO USUÁRIO E SETAR O MESMO PARA A VARIÁVEL GLOBAL $_SESSION['email'];
-        // public function verifyUser($login); //VERIFICA SE É O PRIMEIRO ACESSO DO USUÁRIO PARA DIRECIONAR PARA A TELA DE CONCLUSÃO DE CADASTRO
     }
 ?>

@@ -82,9 +82,7 @@ class PermissionsDAO implements PermissionDAOInterface
         $stmt->bindParam(":fk_idmenus", $fk_idmenus);
         $stmt->execute();
     }
-
-
-
+    
     public function verifyIfUserHasAdm($login){
         $stmt = $this->conn->prepare("SELECT adm FROM permissions p INNER JOIN users u ON p.fk_idusers = u.id WHERE u.login = :login AND p.adm = '1'");
         $stmt->bindParam(':login', $login); //vai pegar o ID pela variável global $_SESSION
@@ -96,6 +94,4 @@ class PermissionsDAO implements PermissionDAOInterface
             $_SESSION['userIsAdm'] = 0;
         }
     }
-
-  
 }

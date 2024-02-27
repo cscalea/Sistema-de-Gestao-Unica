@@ -85,23 +85,4 @@ class MenuDAO implements MenuDAOInterface
         }
         return $menus;
     }
-
-
-    //FUNCTION QUE LISTA OS MENUS QUE O USUÁRIO JÁ POSSUI NA COMBOBOX DE REMOVER MENUS DO ACESSO DO USUÁRIO
-    //     public function listMenusRemove($fk_idusers)
-    //     {
-    //         $stmt = $this->conn->prepare("SELECT m.menu, m.id FROM menus m
-    //         INNER JOIN permissions p
-    //         on m.id = p.fk_idmenus
-    //         where p.fk_idusers = :fk_idusers");
-    //         $stmt->bindParam(":fk_idusers", $fk_idusers);
-    //         $stmt->execute();
-    //         if($stmt->rowCount() > 0) {
-    //             $arrayRemove = $stmt->fetchAll();
-    //             foreach($arrayRemove as $menu) {
-    //               $menus[] = $this->buildMenu($menu);
-    //             }   
-    //           return $menus;
-    //     }    
-    // }
 }

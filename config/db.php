@@ -5,6 +5,7 @@
     $pass = "1234";
     $host = "localhost";
 
+    //conexão PDO criada utilizadas em diversas outras classes
     $conn = new PDO("mysql:dbname=".$dbname.";host=".$host, $user, $pass);
     
    
