@@ -54,7 +54,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
       <hr>
 
-      <div class="container">
+      <!-- <div class="container">
         <div class="row">
           <div class="col-12">
             <h2>Centro de Desenvolvimento</h2>
@@ -81,7 +81,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
           
         </div>
 
-      </div>
+      </div> -->
 
     </div>
   </div>

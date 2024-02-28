@@ -603,17 +603,3 @@ header h1 {
     text-align: center;
 }
 
-/* adicionei um comentário */
-
-
-
-
-
-
-.container{
-    margin-top: 5%;
-    width: 1000px;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-}

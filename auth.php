@@ -63,7 +63,11 @@ $message = new Message($BASE_URL);
                 <img src="img/logo-sp.png">
                 
             </div> -->
+
+  
+
     </div>
+    
     
 
 <?php endif; ?>
