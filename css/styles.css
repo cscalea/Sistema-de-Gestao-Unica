@@ -73,13 +73,14 @@ select {
 #main-container {
     background-image: radial-gradient(#cacaca, #8588a8);
     color: black;
-    padding: 40px;
+    padding: 2px;
     height: 100vh;
+
 }
 
 /* AUTH.PHP - ESTILIZAÇÕES DA TELA DE LOGIN */
 #create-form-login {
-    max-width: 400px;
+    max-width: 360px;
     margin: auto;
     padding: 20px;
     border-radius: 20px;
@@ -110,7 +111,7 @@ select {
 }
 
 .fa-exclamation-circle {
-    margin-left: 180px;
+    margin-left: 166px;
 }
 
 .fa-exclamation-circle:hover {
@@ -161,7 +162,7 @@ select {
     width: 25%;
     margin-left: 36%;
     /* margin-bottom: 20px; */
-    margin-top: 20px;
+    margin-top: 4px;
 }
 
 #loginBtn:hover {
@@ -484,11 +485,16 @@ header h1 {
 /* H5 INDEX VIEW */
 #h5index {
     margin-left: 2%;
+   
+    
 }
 
+hr{
+    height: 3px;
+}
 #topoindex p {
     margin-left: 35%;
-    margin-top: 6px;
+
     font-size: 20px;
 }
 
@@ -511,10 +517,10 @@ header h1 {
 
 #painel{
     background-color: rgb(223, 230, 255);
-    height: 750px;
+    height: 850px;
     border-radius: 2cqh;
     padding: 30px;
-    display: grid;
+    display: -ms-inline-grid;
 }
 
 #main-navbar {

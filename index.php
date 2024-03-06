@@ -29,7 +29,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 <div style="font-size: 12px; color: blue; text-align: center"id="oi">
       <?php
-      echo '<hr>';
+      // echo '<hr>';
       echo 'Dados do AD:'; 
       echo '<br>';
       echo 'Login - '. $_SESSION['login'];

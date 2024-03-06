@@ -51,7 +51,7 @@ $message = new Message($BASE_URL);
                                 
                             </div>
                             <div id="mensagemCapsLock" style="display: none;
-            color: red; margin-left: 28px; margin-top: 10px;">CapsLock ON</div>
+            color: black; margin-left: 28px; margin-top: 10px;">Capslock ativado</div>
                         </div>
                         <!-- BOTÃO SUBMIT QUE ACIONA A AÇÃO DO FORM E JOGA PARA AUTH_PROCESS.PHP -->
                         <input type="submit" id="loginBtn" value="Entrar">
