@@ -131,6 +131,14 @@ if (!empty($flassMessage["msg"])) {
                 <div class="item"><a href="addPermission.php"><i class="fas fa-unlock-alt"></i>Autorizador</a></div>
                 <?php foreach ($menuarrays as $menu) : ?>
                     <div class="item"><a target="_blank" href="<?= $menu->link ?>"><i class="<?= $menu->class ?>"></i><?= $menu->menu ?></a></div>
+                  
+
+
+
+
+
+
+
                 <?php endforeach; ?>
                 <div class="item"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>
             </div>

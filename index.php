@@ -36,6 +36,24 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
       ?>
     </div>
     <hr>
+
+    <button id="btnEnviarToken">Enviar Token</button>
+
+    <script>
+        document.getElementById("btnEnviarToken").addEventListener("click", function() {
+            // Token do usuário que está armazenado na variável global $_SESSION['token']
+            var token = "<?php echo isset($_SESSION['auth_token']) ? $_SESSION['auth_token'] : ''; ?>";
+
+            // URL do sistema de destino
+            var urlDestino = "https://localhost/pretty/index.php?token=" + encodeURIComponent(token);
+
+            // Redirecionar para a nova URL com o token como parâmetro GET
+            window.location.href = urlDestino;
+        });
+    </script>
+
+
+
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -95,4 +113,27 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 </div>
 <?php
 require_once("templates/footer.php");
+?>
+
+
+
+
+<?php
+// if (isset($_GET['token'])) {
+//     // Receber o token enviado via GET
+//     $tokenRecebido = $_GET['token'];
+//     $stmt = $conn->prepare("SELECT * FROM users WHERE token = :token");
+// $stmt->bindParam(":token", $tokenRecebido);
+// $stmt->execute();
+// if($stmt->rowCount() > 0){
+//   echo "Token válido. Usuário autenticado!";
+// }
+
+        
+//      else {
+//       echo "Token inválido. Acesso negado!";
+//     }
+// } else {
+//     echo "Token não recebido.";
+// }
 ?>
