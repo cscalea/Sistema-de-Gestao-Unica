@@ -7,18 +7,18 @@ require_once("model/menu.php");
 require_once("dao/MenuDAO.php");
 require_once("dao/PermissionsDAO.php");
 
-function getUserLogin()
-{
-    $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-    $command = exec('wmic /node:"' . $hostname . '" computersystem get username', $displayInfo);
-    $arrayInfo = explode("\\", $displayInfo[1]);
-    return $arrayInfo;
-}
+// function getUserLogin()
+// {
+//     $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+//     $command = exec('wmic /node:"' . $hostname . '" computersystem get username', $displayInfo);
+//     $arrayInfo = explode("\\", $displayInfo[1]);
+//     return $arrayInfo;
+// }
 
-$display = getUserLogin();
+// $display = getUserLogin();
 
-$wuser = $user = $display[1];
-$_SESSION['windowsuser'] = $wuser;
+// $wuser = $user = $display[1];
+// $_SESSION['windowsuser'] = $wuser;
 
 // pega o primeiro nome do usuário logado para mostrar no MENU
 if (isset($_SESSION['fullname'])) {

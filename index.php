@@ -45,7 +45,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
             var token = "<?php echo isset($_SESSION['auth_token']) ? $_SESSION['auth_token'] : ''; ?>";
 
             // URL do sistema de destino
-            var urlDestino = "https://localhost/pretty/index.php?token=" + encodeURIComponent(token);
+            var urlDestino = "../pretty/index.php?token=" + encodeURIComponent(token);
 
             // Redirecionar para a nova URL com o token como parâmetro GET
             window.location.href = urlDestino;

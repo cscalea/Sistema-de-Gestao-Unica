@@ -5,9 +5,18 @@ create table users(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(55),
 login VARCHAR(50),
-email VARCHAR(120) UNIQUE
+email VARCHAR(120) UNIQUE,
+token VARCHAR(200)
 );
 
+
+
+select * from users;
+
+ALTER TABLE users
+ADD column token VARCHAR(200);
+
+UPDATE users SET token = '013158ba6dee909508c1850562df7a19' where login = "casjunior";
 
 create table menus(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -15,6 +24,9 @@ menu VARCHAR(50) UNIQUE,
 link VARCHAR(100),
 class VARCHAR(45)
 );
+
+select * from menus;
+UPDATE menus SET link = "bi.php" where id = 13;
 
 create table permissions(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
