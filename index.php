@@ -16,7 +16,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
   <hr>
 
   <div class="col-md-12">
-    <div id="painel">
+    <!-- <div id="painel"> -->
     <div id="topoindex">
     <img id="imagem" src="img/IPEM2.png" alt="IPEM">
     <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
@@ -46,7 +46,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
      echo '<br>';
      echo  'Setor: '. $_SESSION['dpto'];
      echo '<br>';
-     echo 'ID do usuário: ' . $_SESSION['uid'];
+     echo 'Dados do user: ' . $_SESSION['uid'];
      echo '<br>';
      echo 'token para autenticar em outros sistemas: ' . $_SESSION['auth_token']
       ?>
@@ -83,7 +83,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
       </div> -->
 
-    </div>
+    <!-- </div> -->
   </div>
 
 

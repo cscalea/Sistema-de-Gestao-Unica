@@ -88,7 +88,32 @@ if (!empty($flassMessage["msg"])) {
         
 <i id="openMenu" class="fas fa-bars"></i>
 </div>
-<nav id="main-navbar" class="navbar navbar-expand-lg">
+
+
+<div class="navbar-container">
+        <nav>
+          <a href="#">
+            <img src="img/ipem.png" alt="hDC Host" class="logo" />
+          </a>
+          <ul class="navbar-items">
+            <li>
+              <a href="home.php">Home</a>
+            </li>
+            <?php if(!isset($_SESSION['auth_token'])):?>
+            <li>
+              <a href="<?php $BASE_URL ?>auth.php" class="default-btn">Entrar</a>
+            </li>
+            <?php else: ?>
+            <li>
+              <a href="<?php $BASE_URL ?>logout.php" class="default-btn">Sair</a>
+            </li>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </div>
+
+
+<!-- <nav id="main-navbar" class="navbar navbar-expand-lg">
 <ul class="navbar-nav">
           
            
@@ -104,7 +129,7 @@ if (!empty($flassMessage["msg"])) {
         <a href="<?php $BASE_URL?>editProfile.php"><p id="nameHeader" style="color: white; display: flex; text-align: center; margin-right: 8px; margin-top: 16px;"><?php echo $nome?></p></a>
         <a id="quit" style="color: white; display: flex; text-align: center;" href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a>
         
-</nav>
+</nav> -->
 
 </header>
        

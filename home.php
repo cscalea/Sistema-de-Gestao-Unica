@@ -43,34 +43,7 @@ $message = new Message($BASE_URL);
                     <!-- TEXTO DE LOGAR EM CIMA DO FORM DE LOGIN -->
 
                     <!-- FORMULÁRIO DE LOGIN COM METHOD POST, ACTION QUE DIRECIONA-->
-                    <form id="create-form-login" action="<?= $BASE_URL ?>auth_process.php" method="POST" onsubmit="return validarCampo()">
-
-                        <img src="<?= $BASE_URL ?>img/ipemetro.png" alt="IPEM" id="img-ipem-login">
-                        <h2 id="txt-form-login">Sistema Único de Gestão</h2>
-                        <hr>
-                        <!-- INPUT "ESCONDIDO" PARA ENVIAR O VALOR LOGIN PARA AUTH_PROCESS RECEBER VIA TYPE -->
-                        <input type="hidden" name="type" value="login">
-                        <div class="form-group">
-                            <!-- CAMPO LOGIN TELA DE LOGIN -->
-                            <label for="login">Login</label>
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <i class="fa fa-exclamation-circle" title="Digite seu login de rede" aria-hidden="true"></i>
-                            <input type="text" required class="form-control" title="Preencha este campo" onkeyup="validarTexto(this)" id="inputLogin" name="login" placeholder="Digite seu login">
-                        </div>
-                        <div class="form-group">
-                            <!-- CAMPO SENHA TELA DE LOGIN -->
-                            <label for="password">Senha</label>
-                            <i class="fa fa-key" aria-hidden="true"></i>
-                            <div id="psw">
-                                <input type="password" required class="form-control"  onkeypress="verificarCapsLock(event)" id="inputPass" name="password" placeholder="Digite seu senha">
-                                <i id="openeye" onclick="mostrarSenha()" class="fa fa-eye" aria-hidden="true"></i>
-                                
-                            </div>
-                            <div id="mensagemCapsLock" style="display: none;
-            color: black; margin-left: 28px; margin-top: 10px;">Capslock ativado</div>
-                        </div>
-                        <input type="submit" id="loginBtn" value="Entrar">
-                    </form>
+                   
                 </div>
             </div>
         </div>
