@@ -61,6 +61,7 @@ class UserDAO implements UserDAOInterface
                 $_SESSION['dpto'] = $dpto;
                 $_SESSION['uid'] = $uid;
                 $this->updateUser($fullname, $email, $user);
+                $this->setTokenToSession();
                 header('location: index.php');
             } else {
                 $_SESSION['login'] = "";
@@ -75,6 +76,18 @@ class UserDAO implements UserDAOInterface
             }
         }
     }
+
+    //seta o token do usuário para a global session
+    public function setTokenToSession()
+    {
+        $token = bin2hex(random_bytes(16));
+        $_SESSION['auth_token'] = $token;
+        $stmt = $this->conn->prepare("UPDATE users SET token = :token WHERE login = :login");
+        $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":login", $_SESSION['login']);
+        $stmt->execute();
+    }
+
     //FUNCTION QUE SETA O ID DO USUÁRIO LOGADO PARA A SESSION
     public function setIdUserToSession($login)
     {
@@ -152,7 +165,11 @@ class UserDAO implements UserDAOInterface
      //FAZ LOGOUT
      public function logout()
      {
+        $stmt = $this->conn->prepare("UPDATE users SET token = NULL WHERE login = :login");
+        $stmt->bindParam(":login", $_SESSION['login']);
+        $stmt->execute();
          session_destroy();
+         
          $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
      }
 }

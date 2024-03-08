@@ -13,6 +13,7 @@
 
         public function AuthenticateUser($login, $password); // MÉTODO QUE RECEBE LOGIN E SENHA DO USUÁRIO E AUTENTICA NO AD PARA LIBERAR OU NÃO ACESSO AO SISTEMA
         public function verifyAuth($login); //IMPEDE QUE O USUÁRIO ACESSE UMA TELA DIRETAMENTE PELA URL SEM TER LOGADO NO SISTEMA
+        public function setTokenToSession();
         public function setIdUserToSession($login); // ESTE MÉTODO DEFINE O ID DO USUÁRIO LOGADO PARA A VARIÁVEL GLOBAL $_SESSION['USERID'];
         public function listUsers(); // FUNÇÃO QUE LISTA OS USUÁRIOS NA TELA DE ADICIONAR OU REMOVER ACESSOS AOS MÓDULOS PARA UM USUÁRIO
         public function buildUser($data); // FUNÇÃO QUE INSTANCIA O OBJETO USUÁRIO COM OS ATRIBUTOS RESGATADOS NA FUNÇÃO QUE O MESMO É CHAMADO        

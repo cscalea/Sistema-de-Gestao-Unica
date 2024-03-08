@@ -10,7 +10,7 @@ require_once("templates/header.php");
 
         <br>
         <div class="form-group">
-            <h1><a href="<?=$BASE_URL?>index.php"><i id="backHomeIcon"class="fa fa-home"></i></a>Dados do usuário</h1>
+            <h1><a href="<?=$BASE_URL?>index.php"><i id="backHomeIcon"class="fa fa-home"></i></a>Dados de <?php echo $_SESSION['nome'] ?></h1>
             <hr>
             <label for="name">Nome:</label>
             <input type="text"  disabled required  title="Digite um nome válido" pattern="[A-Za-z, ]+" id="inputName" name="name" value="<?php echo $_SESSION['fullname'] ?>">

@@ -8,85 +8,58 @@ $userid = $userDao->setIdUserToSession($_SESSION['login']);
 $permission = new PermissionsDAO($conn, $BASE_URL);
 ?>
 
-<!-- image -->
-
 <div id="main-container" class="container-fluid">
-  
-
-  <hr>
-
   <div class="col-md-12">
-    <!-- <div id="painel"> -->
-    <div id="topoindex">
-    <img id="imagem" src="img/IPEM2.png" alt="IPEM">
-    <p>Instituto de Pesos e Medidas do Estado de São Paulo</p>
-  </div>
-<hr>
-      <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['fullname']) ?></h5>
-
-
-
-
-<div style="font-size: 12px; color: blue; text-align: center"id="oi">
+    <h5 id="h5index">Seja Bem-Vindo(a) - <?php echo ($_SESSION['fullname']) ?></h5>
+    <div style="font-size: 12px; color: green; text-align: left" id="oi">
       <?php
       // echo '<hr>';
-      echo 'Dados do AD:'; 
+      echo 'Dados do AD:';
       echo '<br>';
-      echo 'Login - '. $_SESSION['login'];
+      echo 'Login - ' . $_SESSION['login'];
       echo '<br>';
       echo 'email - ' . $_SESSION['mail'];
       echo '<br>';
-      echo 'Nome Completo - ' . $_SESSION['fullname']; 
+      echo 'Nome Completo - ' . $_SESSION['fullname'];
       echo '<br>';
       // echo 'Usuário é ADM [1]sim [0]não - ' . $_SESSION['userIsAdm'];
       // echo '<br>';
-     echo  'Login VBS: '. $_SESSION['scriptPath'];
-     echo '<br>';
-     echo  'Cargo: '. $_SESSION['cargo'];
-     echo '<br>';
-     echo  'Setor: '. $_SESSION['dpto'];
-     echo '<br>';
-     echo 'Dados do user: ' . $_SESSION['uid'];
-     echo '<br>';
-     echo 'token para autenticar em outros sistemas: ' . $_SESSION['auth_token']
+      echo  'Login VBS: ' . $_SESSION['scriptPath'];
+      echo '<br>';
+      echo  'Cargo: ' . $_SESSION['cargo'];
+      echo '<br>';
+      echo  'Setor: ' . $_SESSION['dpto'];
+      echo '<br>';
+      echo 'Dados do user: ' . $_SESSION['uid'];
+      echo '<br>';
+      echo 'token para autenticar em outros sistemas: ' . $_SESSION['auth_token']
       ?>
-</div>
-
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Centro de Desenvolvimento</h2>
+          <h5>Informações / gráficos sobre as atividades do setor</h5>
+        </div>
+      </div>
       <hr>
-
-      <!-- <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2>Centro de Desenvolvimento</h2>
-            <h5>Informações / gráficos sobre as atividades do setor</h5>
-          </div>
-          
+      <div class="row">
+        <div class="col-12">
+          <h2>Centro de Suporte</h2>
+          <h5>Informações / gráficos sobre as atividades do setor</h5>
         </div>
-
-        <hr>
-
-        <div class="row">
-          <div class="col-12">
-            <h2>Centro de Suporte</h2>
-            <h5>Informações / gráficos sobre as atividades do setor</h5>
-          </div>
-          
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-12">
+          <h2>Centro de Infraestrutura de TI</h2>
+          <h5>Informações / gráficos sobre as atividades do setor</h5>
         </div>
-<hr>
-        <div class="row">
-          <div class="col-12">
-            <h2>Centro de Infraestrutura de TI</h2>
-            <h5>Informações / gráficos sobre as atividades do setor</h5>
-          </div>
-          
-        </div>
-
-      </div> -->
-
+      </div>
+    </div>
     <!-- </div> -->
   </div>
-
-
   <!-- <div class="container">
   <div class="row">
       <div class="col-4">
@@ -116,15 +89,10 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
       <h1>IPEM</h1>
       <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
       </div>
-  </div>
-  
+  </div> 
 </div> -->
-
-
 </div>
 </div>
-
-
 <?php
 require_once("templates/footer.php");
 ?>
