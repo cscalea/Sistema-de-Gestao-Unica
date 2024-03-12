@@ -17,27 +17,6 @@ class MenuDAO implements MenuDAOInterface
         $this->message = new Message($url);
     }
 
-
-    // public function getMenusByUserLogin($login)
-    // {
-    //     $menus = [];
-    //     $stmt = $this->conn->prepare("select m.id, m.menu, m.link, u.name from menus m 
-    //         INNER JOIN permissions p
-    //         on m.id = p.fk_idmenus
-    //         INNER JOIN users u
-    //         on p.fk_idusers = u.id            
-    //         WHERE u.login = :login ORDER BY m.menu ASC");
-    //     $stmt->bindParam(":login", $login);
-    //     $stmt->execute();
-    //     if ($stmt->rowCount() > 0) {
-    //         $menusArray = $stmt->fetchAll();
-    //         foreach ($menusArray as $menu) {
-    //             $menus[] = $this->buildMenu($menu);
-    //         }
-    //     }
-    //     return $menus;
-    // }
-
     //FUNCTION QUE INSTANCIA UM OBJETO E ATRIBUI OS DADOS AO OBJETO INSTANCIADO
     //EXEMPLO, SELECT NO BANCO DA FUNCTION LISTMENUS2 CRIA UM ARRAY ATRAVÉS DO fetchAll(), e chama a function Build que pega cada um desses valores e instancia o objeto MENU
     public function buildMenu($data)
@@ -49,7 +28,6 @@ class MenuDAO implements MenuDAOInterface
         $menu->class = $data["class"];
         return $menu;
     }
-
 
     //FUNCTION QUE LISTA TODOS OS MENUS DO SISTEMA
     public function listMenus()
@@ -75,6 +53,26 @@ class MenuDAO implements MenuDAOInterface
     //     INNER JOIN users u
     //     ON p.fk_idusers = u.id
     //     WHERE p.adm = 1 AND u.login = :login AND m.menu != 'autorizador';");
+    //     $stmt->bindParam(":login", $login);
+    //     $stmt->execute();
+    //     if ($stmt->rowCount() > 0) {
+    //         $menusArray = $stmt->fetchAll();
+    //         foreach ($menusArray as $menu) {
+    //             $menus[] = $this->buildMenu($menu);
+    //         }
+    //     }
+    //     return $menus;
+    // }
+
+    // public function getMenusByUserLogin($login)
+    // {
+    //     $menus = [];
+    //     $stmt = $this->conn->prepare("select m.id, m.menu, m.link, u.name from menus m 
+    //         INNER JOIN permissions p
+    //         on m.id = p.fk_idmenus
+    //         INNER JOIN users u
+    //         on p.fk_idusers = u.id            
+    //         WHERE u.login = :login ORDER BY m.menu ASC");
     //     $stmt->bindParam(":login", $login);
     //     $stmt->execute();
     //     if ($stmt->rowCount() > 0) {

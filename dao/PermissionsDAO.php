@@ -20,11 +20,11 @@ class PermissionsDAO implements PermissionDAOInterface
     public function buildPermission($data)
     {
         $permissions = new Permissions();
-
         $permissions->fk_iduser = $data["fk_idusers"];
         $permissions->fk_idmenu = $data["fk_idmenus"];
         $permissions->adm = $data["adm"];
     }
+
     //FUNCTION COM INSERT PARA ADICIONAR PERMISSÃO AO PERFIL DO USUÁRIO
     public function insertPermission(Permissions $permission)
     {
@@ -33,18 +33,16 @@ class PermissionsDAO implements PermissionDAOInterface
         $stmt->bindParam(":fk_idmenus", $permission->fk_idmenu);
         $stmt->bindParam(":adm", $permission->adm);
         $stmt->execute();
-
         // Mensagem de sucesso por adicionar o filme
         $this->message->setMessage("Permissão concedida! ", "success", "addPermission.php");
     }
+    
     //FUNCTION QUE DELETA A PERMISSÃO DO PERFIL DO USUÁRIO
     public function deletePermission($fk_iduser, $fk_idmenu)
     {
         $stmt = $this->conn->prepare("DELETE FROM permissions WHERE fk_idusers = :fk_idusers AND fk_idmenus = :fk_idmenus");
         $stmt->bindParam(":fk_idusers", $fk_iduser);
         $stmt->bindParam(":fk_idmenus", $fk_idmenu);
-        
-        
         $stmt->execute();
         if($stmt->rowCount() === 0){
             $this->message->setMessage("O usuário não possui acesso ao módulo.", "error", "addPermission.php");
@@ -52,6 +50,7 @@ class PermissionsDAO implements PermissionDAOInterface
             $this->message->setMessage("Acesso removido com sucesso.", "success", "addPermission.php");
         }
     }
+
     //FUNCTION QUE VERIFICA SE O USUÁRIO JÁ POSSUI MENU OU NÃO, PARA PERMITIR OU NÃO A INSERÇÃO / REMOÇÃO DE MENU DO ACESSO DO USUÁRIO
     public function verifyMenu($fk_idusers, $fk_idmenus)
     {
@@ -59,15 +58,12 @@ class PermissionsDAO implements PermissionDAOInterface
         INNER JOIN permissions p
         on m.id = p.fk_idmenus
         WHERE p.fk_idusers = :fk_idusers AND p.fk_idmenus = :fk_idmenus; ");
-
         $stmt->bindParam(":fk_idusers", $fk_idusers);
         $stmt->bindParam(":fk_idmenus", $fk_idmenus);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-
             $menusArray = $stmt->fetchAll();
-
             foreach ($menusArray as $menu) {
                 $menus[] = $this->buildPermission($menu);
             }
@@ -87,7 +83,6 @@ class PermissionsDAO implements PermissionDAOInterface
         $stmt = $this->conn->prepare("SELECT adm FROM permissions p INNER JOIN users u ON p.fk_idusers = u.id WHERE u.login = :login AND p.adm = '1'");
         $stmt->bindParam(':login', $login); //vai pegar o ID pela variável global $_SESSION
         $stmt->execute();
-
         if($stmt->rowCount() > 0)
             $_SESSION['userIsAdm'] = 1;
         else{

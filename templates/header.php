@@ -67,6 +67,7 @@ if (!empty($flassMessage["msg"])) {
 
     <!-- JAVASCRIPT -->
     <script src="js/password.js"></script>
+    <script src="js/auth_token.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- CSS do projeto -->
@@ -88,6 +89,13 @@ if (!empty($flassMessage["msg"])) {
                         <img src="img/ipem.png" alt="ipem sp" class="logo" />
                     </a>
                     <ul class="navbar-items">
+
+                    <li>
+                    <button  id="btnEnviarToken">Enviar Token</button>
+                            </li>
+                    <li>
+                                <a href="dadosAd.php">AD DATA</a>
+                            </li>
                         <?php if (!isset($_SESSION['auth_token'])) : ?>
                             <li>
                                 <a href="<?php $BASE_URL ?>auth.php" class="default-btn">Entrar</a>

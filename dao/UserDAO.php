@@ -17,7 +17,7 @@ class UserDAO implements UserDAOInterface
     }
 
     //FUNCTION DE AUTENTICAR O USUÁRIO NO AD, RECEBE VIA FORMULÁRIO POST LOGIN E SENHA DA TELA DE LOGIN
-    public function AuthenticateUser($login, $password)
+    public function AuthenticateUser($login, $password) //CONFIGURAÇÃO CONEXÃO LDAP
     {
         $ldap_server = "10.15.16.191";
         $dominio = "ipem.sp"; //Dominio local ou global
@@ -25,7 +25,7 @@ class UserDAO implements UserDAOInterface
         $ldap_porta = "389";
         $ldap_pass   = $password;
         $ldap_base_dn = "dc=ipem,dc=sp";
-        $ldapcon = ldap_connect($ldap_server, $ldap_porta) or die("Could not connect to LDAP server.");
+        $ldapcon = ldap_connect($ldap_server, $ldap_porta) or die("Could not connect to LDAP server."); //CONEXÃO LDAP
 
         if ($ldapcon) {
 
@@ -36,11 +36,10 @@ class UserDAO implements UserDAOInterface
 
             // verify binding
 
-            if ($ldapbind) {
-                //SE AS CREDENCIAIS FOREM VÁLIDAS, DIRECIONA PARA INDEX.PHP
+            if ($ldapbind) { //SUCESSO NA CONEXÃO
                 $_SESSION['login'] = $login;
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
-                $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))";
+                $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))"; //CONFIGURAÇÃO PARA RESGATAR DADOS DO USUÁRIO LOGADO
                 $attributes = array("cn", "mail", "scriptPath", "title", "department", "distinguishedname");
                 $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
                 $entry = ldap_first_entry($ldapcon, $search_result);
@@ -51,17 +50,16 @@ class UserDAO implements UserDAOInterface
                 $dpto = ldap_get_values($ldapcon, $entry, "department")[0];
                 $uid = ldap_get_values($ldapcon, $entry, "distinguishedname")[0];
 
-                $token = bin2hex(random_bytes(16));
-                $_SESSION['auth_token'] = $token;
-
-                $_SESSION['scriptPath'] = $sp;
+                $token = bin2hex(random_bytes(16)); //GERA UM TOKEN 
+                $_SESSION['auth_token'] = $token; //TOKEN ADICIONADO NA SESSION DO USUÁRIO
+                $_SESSION['scriptPath'] = $sp; //SETA OS DADOS DO USUÁRIO LOGADO NA GLOBAL SESSION
                 $_SESSION['mail'] = $email;
                 $_SESSION['fullname'] = $fullname;
                 $_SESSION['cargo'] = $cargo;
                 $_SESSION['dpto'] = $dpto;
                 $_SESSION['uid'] = $uid;
                 $this->updateUser($fullname, $email, $user);
-                $this->setTokenToSession();
+                $this->setTokenToSession(); //INSERE O TOKEN DO USUÁRIO NO BANCO, É EXCLUÍDO AO FAZER LOGOUT
                 header('location: index.php');
             } else {
                 $_SESSION['login'] = "";
