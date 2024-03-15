@@ -13,15 +13,22 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 <div class="container">
 
-<?php for($i = 0; $i<9; $i++):?>
+<?php for($i = 0; $i<4; $i++):?>
   <div class="box">
-      <h4 id="txtgame"> <?php echo $i ?> </h4>
+    <img src="img/logo-branco.png" style="width: 40px;">
+    <p style="color: white;">seminário INOVAÇÃO - 2024</p>
+    <hr style="background-color: white; margin-bottom: 5px;">
+  <img src="img/site.png" style="width: 350px; margin-left: -20px;">
+    <div class="cardBox">
+      <p>saiba mais</p>
+    </div>
+      
   </div>
   <?php endfor; ?>
 
 </div>
 
-
+<!-- <h4 id="txtgame"> <?php echo rand(1, 500); ?> </h4> -->
 
 
 

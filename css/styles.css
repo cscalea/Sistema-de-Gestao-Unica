@@ -580,13 +580,14 @@ header h1 {
 }
 
 .box {
-    width: 210px;
-    height: 210px;
+    width: 350px;
+    height: 350px;
     background-color: #003366;
     margin-bottom: 20px; /* Espaço entre os cards verticalmente */
     padding: 20px;
     box-sizing: border-box; /* Garante que o padding não aumente a largura */
-    border-radius: 8px;
+    border-top-right-radius:5lvw;
+   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
     margin-top: 35px;
     margin-left: 40px;
@@ -594,23 +595,38 @@ header h1 {
     
   }
 
-.box:hover{
+  .box:hover{
     cursor: pointer;
-    transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.105, 1.105, 1.105);
     transition: .6s;
     opacity: .9;
-    color: #003366;
-    #txtgame{
-        color: white;
-        text-align: center;
-        font-size: 130px;
-    }
+    color: black;
+   background-color: #003366;;
+  
 }
 
-#txtgame{
-color: transparent;
+
+.cardBox{
+   height: 12%;
+    width: 350px;
+     background-color: rgb(199, 199, 199);
+     margin-left: -20px;  
 }
 
+.cardBox p{
+ text-align: center;
+ 
+ }
+
+.cardBox:hover{
+    height: 30%;
+    width: 210px;
+     background-color: rgb(199, 199, 199);
+     
+     margin-left: -20px;
+    cursor: pointer;
+ 
+}
 
 
 
