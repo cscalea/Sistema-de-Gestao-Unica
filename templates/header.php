@@ -94,7 +94,7 @@ if (!empty($flassMessage["msg"])) {
                     <button  id="btnEnviarToken">Enviar Token</button>
                             </li>
                             <li>
-                                <a href="allUsers.php">all users</a>
+                                <a href="allUsersFromAd.php">all users</a>
                             </li>
                     <li>
                                 <a href="dadosAd.php">AD DATA</a>

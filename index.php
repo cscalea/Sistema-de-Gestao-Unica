@@ -28,7 +28,7 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
 
 </div>
 
-<!-- <h4 id="txtgame"> <?php echo rand(1, 500); ?> </h4> -->
+
 
 
 
