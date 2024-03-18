@@ -20,5 +20,6 @@
         public function redirectPermissionPage(); // MÉTODO QUE DIRECIONA O USUÁRIO PARA A HOME CASO O MESMO TENTE ACESSAR A TELA DE ADICIONAR MENUS DIRETAMENTE PELA URL       
         public function logout(); // MÉTODO PARA FAZER O LOGOUT E DESTRUIR A SESSION
         public function updateUser($name, $email, $login); // MÉTODO PARA ALTERAR DADOS DO USUÁRIO  
+        public function allUsersFromAd();
     }
 ?>

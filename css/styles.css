@@ -619,8 +619,8 @@ header h1 {
  }
 
 .cardBox:hover{
-    height: 30%;
-    width: 210px;
+    
+    width: 350px;
      background-color: rgb(199, 199, 199);
      
      margin-left: -20px;
