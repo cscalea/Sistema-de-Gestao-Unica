@@ -3,6 +3,8 @@ require_once("model/message.php");
 require_once("model/user.php");
 require_once("config/globals.php");
 require_once("config/ldapConfig.php");
+require_once("ldap.php");
+
 
 class UserDAO implements UserDAOInterface
 {
@@ -108,6 +110,7 @@ class UserDAO implements UserDAOInterface
         $user->login = $data["login"];
         $user->name = $data["name"];
         $user->email = $data["email"];
+        $user->setor = $data["setor"];
         return $user;
     }
 
@@ -183,42 +186,67 @@ class UserDAO implements UserDAOInterface
             if ($ldapbind) { //SUCESSO NA CONEXÃO
                 // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
                 $filter = "(objectClass=user)"; //CONFIGURAÇÃO PARA RESGATAR DADOS DO USUÁRIO LOGADO
-                $attributes = array("cn", "samaccountname", "mail");
+                $attributes = array("cn", "samaccountname", "mail", "department");
                 $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
                 $entry = ldap_first_entry($ldapcon, $search_result);
-                $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
-                $email = ldap_get_values($ldapcon, $entry, "mail")[0];
-                $name = ldap_get_values($ldapcon, $entry, "samaccountname")[0];
                 $ldap_entries = ldap_get_entries($ldapcon, $search_result);
             }
             $usuarios = array();
 
-    // Iterar pelos resultados e adicionar os usuários ao array
-    foreach ($ldap_entries as $entry) {
-        if (isset($entry["cn"][0]) && isset($entry["samaccountname"][0]) && isset($entry["mail"][0])) {
-            $usuario = array(
-                "nome_completo" => $entry["cn"][0],
-                "login" => $entry["samaccountname"][0],
-                "email" => $entry["mail"][0]
-            );
-            $usuarios[] = $usuario;
-        }
-    }
+            // Iterar pelos resultados e adicionar os usuários ao array
+            $i = 0;
+            foreach ($ldap_entries as $entry) {
 
-    // Exibir o array de usuários
-    
+                $usuario = array(
+                    "nome_completo" => $entry["cn"][0],
+                    "login" => $entry["samaccountname"][0],
+                    "email" => $entry["mail"][0],
+                    "setor" => $entry["department"][0]
+                );
+                $usuarios[] = $usuario;
+            }
+            foreach($usuarios as $usuarios){
+                $name = $usuario['nome_completo'];
+                $login = $usuario['login'];
+                $email = $usuario['email'];
+                $setor = $usuario['setor'];
+                if(!isset($setor)){
+                    $setor = "não tem";
+                }
+                if(!isset($email)){
+                    $email = "não tem";
+                }
+                $stmt1 = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
+                $stmt1->bindParam(":login", $login);
+                $stmt1->fetchAll();
+                $stmt1->execute();
+                if ($stmt1->rowCount() < 1) {
+                    $stmt = $this->conn->prepare("INSERT into users (name, login, email, setor) VALUES (:name, :login, :email, :setor");
+                    $stmt->bindParam(":name", $name);
+                    $stmt->bindParam(":login", $login);
+                    $stmt->bindParam(":email", $email);
+                    $stmt->bindParam(":setor", $setor);
+                    $stmt->fetchAll();
+                    $stmt->execute();
+                }
+            }
+                
             
+
+            // Exibir o array de usuários
+
+
         }
     }
 
-     //FAZ LOGOUT
-     public function logout()
-     {
+    //FAZ LOGOUT
+    public function logout()
+    {
         $stmt = $this->conn->prepare("UPDATE users SET token = NULL WHERE login = :login");
         $stmt->bindParam(":login", $_SESSION['login']);
         $stmt->execute();
-         session_destroy();
-         
-         $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
-     }
+        session_destroy();
+
+        $this->message->setMessage("Logout realizado com sucesso", "success", "auth.php");
+    }
 }

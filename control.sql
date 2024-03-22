@@ -6,15 +6,16 @@ id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(55),
 login VARCHAR(50),
 email VARCHAR(120) UNIQUE,
+setor VARCHAR(200),
 token VARCHAR(200)
 );
 
-
+INSERT into users (name, login, email, setor) VALUES ("carlos", "casjun", "cas@ipem.com", "dadm");
 
 select * from users;
 
 ALTER TABLE users
-ADD column token VARCHAR(200);
+ADD column setor VARCHAR(200);
 
 UPDATE users SET token = '013158ba6dee909508c1850562df7a19' where login = "casjunior";
 

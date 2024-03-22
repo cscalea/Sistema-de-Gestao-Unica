@@ -16,23 +16,6 @@ INSERT INTO menus  (menu, link, class) VALUES
 ('Ferramenta de BI', '#', "fas fa-chart-bar")
 ;
 
-
-/* INSERT DOS USUÁRIOS */
-INSERT INTO users (name, login) VALUES
-('Carlos Alberto Scalea Junior', 'casjunior'),  /* id: 1 */
-('Periceles Jose Vieira Vianna', 'pjvvianna'),  /* id: 2  */
-('José Fernando Carvalho Nascimento', 'jfncarvalho'),  /* id: 3  */
-('Rodrigo Peixoto', 'rpeixoto'),  /* id: 4  */
-('Fabio da Silva Bodiao', 'fsbodiao'),  /* id: 5  */
-('Glauco Fonseca Amaral', 'gfamaral'),  /* id: 6  */
-('Leandra Franco Oliveira', 'lfoliveira'),  /* id: 7  */
-('Jefferson Santos', 'jsantos'),  /* id: 8  */
-('Usuario Scanner', 'a') /* id: 9*/
-;
-
-
-
-
 INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
 (9, 1, 1),
 (9, 2, 1),
@@ -43,25 +26,6 @@ INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
 (9, 7, 1),
 (9, 8, 1),
 (9, 9, 1)
-;
-
-delete from permissions where fk_idusers = 1;
-
-/* INSERT USUÁRIO GFAMARAL ADM APENAS EM OUVIDORIA */
-INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
-(1,8,0)
-;
-/* INSERT USUÁRIO RSPEIXOTO ADM APENAS EM TAXÍMETRO */
-INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
-(4, 9, 1)
-;
-/* INSERT USUÁRIO GFAMARAL ADM APENAS EM OUVIDORIA */
-INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
-(3, 3, 1)
-;
-
-INSERT INTO permissions (fk_idusers, fk_idmenus, adm) VALUES
-(1, 6, 1)
 ;
 
 

@@ -1,3 +1,8 @@
+<?php require_once("config/db.php");
+require_once("dao/UserDAO.php");
+$userDao = new UserDAO($conn, $BASE_URL);
+?>
+
 <style>
 table {
   font-family: arial, sans-serif;
@@ -17,6 +22,7 @@ tr:nth-child(even) {
 </style>
 
 <?php
+// $userDao->allUsersFromAd();
 $ldap_server = "10.15.16.191";
 $dominio = "ipem.sp"; //Dominio local ou global
 $user = "casjunior";
@@ -59,19 +65,35 @@ if ($ldapcon) {
   <tr>
     <td><?php if (isset($entry["cn"][0])) {
                       echo "Nome completo: " . $entry["cn"][0] . "<br>";
+                    
                     } ?></td>
     <td><?php if (isset($entry["samaccountname"][0])) {
                         echo "Login: " . $entry["samaccountname"][0] . "<br>";
+                        
                     } ?></td>
     <td><?php if (isset($entry["mail"][0])) {
                         echo "E-mail: " . $entry["mail"][0] . "<br>";
+                        
                     } ?></td>
     <td><?php if (isset($entry["department"][0])) {
                         echo "Departamento: " . $entry["department"][0] . "<br>";
+                   
                     } ?> </td>
+                    <?php
+  
+  
+  
+ 
+ 
+  
+?>
   </tr>
+                    
+
+
   <?php } endforeach; ?>
 </table>
+
   <?php
   }
 }

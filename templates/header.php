@@ -26,13 +26,14 @@ if (isset($_SESSION['fullname'])) {
     $nome = $n[0];
     $_SESSION['nome'] = $nome;
 }
-
+  
 $permissionDao = new PermissionsDAO($conn, $BASE_URL);
 if (isset($_SESSION['login'])) {
     $permissionDao->verifyIfUserHasAdm($_SESSION['login']);
 }
 $MenuDAO = new MenuDAO($conn, $BASE_URL);
 $userDao = new UserDAO($conn, $BASE_URL);
+
 
 if (isset($_SESSION['login'])) {
 
@@ -94,10 +95,11 @@ if (!empty($flassMessage["msg"])) {
                     <button  id="btnEnviarToken">Enviar Token</button>
                             </li>
                             <li>
-                                <a href="allUsersFromAd.php">all users</a>
+                                <a href="allUsersFromAd.php">AD - All Users</a>
+                                
                             </li>
                     <li>
-                                <a href="dadosAd.php">AD DATA</a>
+                                <a href="dadosAd.php">Userdata</a>
                             </li>
                         <?php if (!isset($_SESSION['auth_token'])) : ?>
                             <li>

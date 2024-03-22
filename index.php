@@ -18,9 +18,9 @@ $permission = new PermissionsDAO($conn, $BASE_URL);
     <img src="img/logo-branco.png" style="width: 40px;">
     <p style="color: white;">seminário INOVAÇÃO - 2024</p>
     <hr style="background-color: white; margin-bottom: 5px;">
-  <img src="img/site.png" style="width: 350px; margin-left: -20px;">
+  <img src="img/site.png" style="width: 260px; margin-left: 24px; margin-top: 14px;">
     <div class="cardBox">
-      <p>saiba mais</p>
+      <p>saída mais</p>
     </div>
       
   </div>

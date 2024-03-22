@@ -379,8 +379,8 @@ header h1 {
 
 #inputLogin:focus,
 #inputPass:focus {
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: rgb(79, 79, 83) 2px 3px 3px, rgb(20, 15, 37) 2px 3px 3px;
+    border: 1px solid rgb(0, 41, 68);
+    box-shadow: rgb(79, 79, 83) 1px 2px 2px, rgb(20, 15, 37) 1px 2px 2px;
 }
 
 #openeye {
@@ -486,13 +486,11 @@ header h1 {
     display: none;
 }
 
-
 @media screen and (max-width: 500px) {
     .menu-toggler {
         display: block;
     }
 }
-
 /* .card-btn:hover {
     background-color: transparent;
     border: 1px solid #001f3d;
@@ -501,19 +499,9 @@ header h1 {
     transition: .4s;
     color: black;
 } */
-
 /* HEADER - SIDEBAR*/
-
-
-
-
-
-
 /* Nome do Usuário Logado */
-
-
 /*  @@@@@@@@@@@@@@@@@@     ALTERAR PERMISSOES     @@@@@@@@@@@@@@@@@@  */
-
 /*MAIN-TITLE*/
 
 #main-title {
@@ -548,7 +536,6 @@ header h1 {
 
 #topoindex p {
     margin-left: 35%;
-
     font-size: 20px;
 }
 
@@ -573,64 +560,55 @@ header h1 {
     color: black;
     margin-top: 40px;
     width: 950px;
-  display: flex;
-  flex-wrap: wrap; /* Permite que os cards quesbrem para a próxima linha */
-  justify-content: space-evenly; /* Espaçamento entre os cards */
-  padding-bottom: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 3svi;
+    /* Permite que os cards quesbrem para a próxima linha */
+    justify-content: space-evenly;
+    /* Espaçamento entre os cards */
+    padding-bottom: 400px;
 }
 
 .box {
     width: 350px;
     height: 350px;
     background-color: #003366;
-    margin-bottom: 20px; /* Espaço entre os cards verticalmente */
+    margin-bottom: 20px;
+    /* Espaço entre os cards verticalmente */
     padding: 20px;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura */
-    border-top-right-radius:5lvw;
-   
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-sizing: border-box;
+    /* Garante que o padding não aumente a largura */
+    border-top-right-radius: 5lvw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 35px;
     margin-left: 40px;
-    
-    
-  }
+}
 
-  .box:hover{
+.box:hover {
     cursor: pointer;
-    transform: scale3d(1.105, 1.105, 1.105);
-    transition: .6s;
-    opacity: .9;
-    color: black;
-   background-color: #003366;;
-  
+    transform: scale3d(1.103, 1.103, 1.103);
+    transition: .3s;
 }
 
 
-.cardBox{
-   height: 12%;
+.cardBox {
+    height: 12%;
     width: 350px;
-     background-color: rgb(199, 199, 199);
-     margin-left: -20px;  
+    background-color: rgb(199, 199, 199);
+    margin-left: -20px;
+    margin-top: 28px;
 }
 
-.cardBox p{
- text-align: center;
- 
- }
+.cardBox p {
+    text-align: center;
+}
 
-.cardBox:hover{
-    
+/* .cardBox:hover {
     width: 350px;
-     background-color: rgb(199, 199, 199);
-     
-     margin-left: -20px;
+    background-color: rgb(199, 199, 199);
+    margin-left: -20px;
     cursor: pointer;
- 
-}
-
-
-
-
+} */
 
 #main-navbar {
     background-color: #003366;
@@ -640,13 +618,10 @@ header h1 {
 #navbar ul li a:hover {
     border-bottom: 2px solid #f5c518;
     transition: 0s;
-
 }
 
 #navbar ul li a:hover {
     background-color: rgb(56, 56, 56);
-
-
 }
 
 .navbar-nav {
@@ -664,7 +639,6 @@ header h1 {
     color: red;
     transition: .2s;
     transform: scale(1.1);
-
 }
 
 #quit i {
@@ -714,8 +688,3 @@ header h1 {
     width: 100%;
     text-align: center;
 }
-
-
-
-
-
