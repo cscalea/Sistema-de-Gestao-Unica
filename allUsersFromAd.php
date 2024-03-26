@@ -4,21 +4,33 @@ $userDao = new UserDAO($conn, $BASE_URL);
 ?>
 
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 2px;
-}
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
 </style>
 
 <?php
@@ -53,47 +65,83 @@ if ($ldapcon) {
 ?>
 
     <a href="index.php" ;>home</a>
-    <table>
-  <tr>
-    <th>Nome</th>
-    <th>Login</th>
-    <th>E-mail</th>
-    <th>Setor</th>
-  </tr>
-  
-  <?php foreach ($ldap_entries as $entry) : { ?>
-  <tr>
-    <td><?php if (isset($entry["cn"][0])) {
-                      echo "Nome completo: " . $entry["cn"][0] . "<br>";
-                    
-                    } ?></td>
-    <td><?php if (isset($entry["samaccountname"][0])) {
-                        echo "Login: " . $entry["samaccountname"][0] . "<br>";
+
+    <table id="customers">
+        <tr>
+        <th onclick="sortTable(0)" style="cursor: pointer;">Nome</th>
+    <th onclick="sortTable(1)" style="cursor: pointer;">Login</th>
+    <th onclick="sortTable(2)" style="cursor: pointer;">E-mail</th>
+    <th onclick="sortTable(3)" style="cursor: pointer;">Setor</th>
+        </tr>
+
+
+        <?php
+         foreach ($ldap_entries as $entry) : { 
+
+        ?>
+        <?php if (isset($entry["department"][0])): { ?>
+            <tr>
+                <td>
+               
                         
-                    } ?></td>
-    <td><?php if (isset($entry["mail"][0])) {
-                        echo "E-mail: " . $entry["mail"][0] . "<br>";
-                        
-                    } ?></td>
-    <td><?php if (isset($entry["department"][0])) {
-                        echo "Departamento: " . $entry["department"][0] . "<br>";
                    
-                    } ?> </td>
-                    <?php
-  
-  
-  
- 
- 
-  
-?>
-  </tr>
                     
+                <?php if (isset($entry["cn"][0])) {
+                      echo $entry["cn"][0] . "<br>";
+                    
+                    } ?>
+
+                </td>
+                <td>
+                <?php if (isset($entry["samaccountname"][0])) {
+                        echo $entry["samaccountname"][0] . "<br>";
+                        
+                    } ?>
+                </td>
+                <td><?php if (isset($entry["mail"][0])) {
+                        echo  $entry["mail"][0] . "<br>";
+                        
+                    } ?></td>
+                <td><?php if (isset($entry["department"][0])) {
+                        echo $entry["department"][0] . "<br>";
+                   
+                    } ?></td>
+                    <?php } endif; ?>
+  <?php }endforeach;  ?>
+            </tr>
+            <?php
+        }
+?>
+
+    </table>
 
 
-  <?php } endforeach; ?>
-</table>
 
-  <?php
+   
+    <script>
+function sortTable(colIndex) {
+  var table = document.getElementById("customers");
+  var rows = Array.from(table.rows).slice(1); // Ignora a linha de cabeçalho
+  var sortOrder = 1;
+
+  // Alterna a ordem de classificação ao clicar na mesma coluna novamente
+  if (table.lastSortedColumn === colIndex) {
+    sortOrder = -1;
+    table.lastSortedColumn = null; // Remove a coluna de classificação anterior
+  } else {
+    table.lastSortedColumn = colIndex;
   }
+
+  rows.sort((a, b) => {
+    var aText = a.cells[colIndex].textContent.trim().toLowerCase();
+    var bText = b.cells[colIndex].textContent.trim().toLowerCase();
+    return sortOrder * aText.localeCompare(bText);
+  });
+
+  // Reordena as linhas na tabela
+  table.tBodies[0].append(...rows);
+}
+</script>
+  <?php
+  
 }

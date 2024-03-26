@@ -8,12 +8,14 @@ require_once("ldap.php");
 
 class UserDAO implements UserDAOInterface
 {
+   
     private $conn;
     private $url;
     private $message;
     //MÉTODO CONSTRUTOR DO USERDAO PARA INSTANCIAR O OBJETO EM OUTRAS CLASSES
     public function __construct(PDO $conn, $url)
     {
+       
         $this->conn = $conn;
         $this->url = $url;
         $this->message = new Message($url);

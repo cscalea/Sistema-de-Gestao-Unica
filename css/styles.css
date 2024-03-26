@@ -80,23 +80,53 @@ select {
 }
 
 .logo {
-    width: 260px;
-    margin-top: 18px;
+    position: absolute;
+    right: 0;
+    width: 180px;
+    margin-top: 24px;
+    margin-right: 40px;
 }
 
 .navbar-items {
     position: absolute;
-    right: 0;
+    left: 60px;
+  
     height: 20px;
     line-height: 70px;
     margin: 0;
     display: inline-block;
 }
 
+.navbar-items-right{
+    position: absolute;
+    right: 0;
+  
+    height: 20px;
+    line-height: 70px;
+    margin: 0;
+    display: inline-block;
+}
+
+.navbar-items-right li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-left: 25px;
+}
+
 .navbar-items li {
     display: inline-block;
     text-transform: uppercase;
     margin-left: 25px;
+}
+
+.navbar-items-right a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.navbar-items-right a:hover {
+    color: #ccc;
 }
 
 .navbar-items a {
@@ -177,7 +207,7 @@ header img {
 }
 
 .fa-edit {
-    color: rgb(145, 145, 145);
+    color: rgb(255, 255, 255);
 }
 
 .fa-edit:hover {

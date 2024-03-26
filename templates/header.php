@@ -7,26 +7,12 @@ require_once("model/menu.php");
 require_once("dao/MenuDAO.php");
 require_once("dao/PermissionsDAO.php");
 
-// function getUserLogin()
-// {
-//     $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-//     $command = exec('wmic /node:"' . $hostname . '" computersystem get username', $displayInfo);
-//     $arrayInfo = explode("\\", $displayInfo[1]);
-//     return $arrayInfo;
-// }
-
-// $display = getUserLogin();
-
-// $wuser = $user = $display[1];
-// $_SESSION['windowsuser'] = $wuser;
-
-// pega o primeiro nome do usuário logado para mostrar no MENU
 if (isset($_SESSION['fullname'])) {
     $n = explode(" ", $_SESSION['fullname']);
     $nome = $n[0];
     $_SESSION['nome'] = $nome;
 }
-  
+
 $permissionDao = new PermissionsDAO($conn, $BASE_URL);
 if (isset($_SESSION['login'])) {
     $permissionDao->verifyIfUserHasAdm($_SESSION['login']);
@@ -80,35 +66,44 @@ if (!empty($flassMessage["msg"])) {
     <?php if (isset($_SESSION['login']))
         if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
         <header>
+
             <!-- MENU BUTTON -->
             <div class="menu-btn">
                 <i id="openMenu" class="fas fa-bars"></i>
             </div>
             <div class="navbar-container">
                 <nav>
-                    <a href="#">
-                        <img src="img/ipem.png" alt="ipem sp" class="logo" />
-                    </a>
-                    <ul class="navbar-items">
 
-                    <li>
-                    <button  id="btnEnviarToken">Enviar Token</button>
-                            </li>
-                            <li>
-                                <a href="allUsersFromAd.php">AD - All Users</a>
-                                
-                            </li>
-                    <li>
-                                <a href="dadosAd.php">Userdata</a>
-                            </li>
+                    <!-- <a href="#">
+                        <img src="img/ipem.png" alt="ipem sp" class="logo" />
+                    </a> -->
+                    <ul class="navbar-items">
+                        <li>
+                            <a href="index.php">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="allUsersFromAd.php">AD - All Users</a>
+
+                        </li>
+                        <li>
+                            <a href="allUsersFromFpw.php">FPW - All Users</a>
+
+                        </li>
+                        <li>
+                            <a href="dadosAd.php">Userdata</a>
+                        </li>
+                        <li>
+                            <button id="btnEnviarToken">Enviar Token</button>
+                        </li>
+                    </ul>
+                    <ul class="navbar-items-right">
                         <?php if (!isset($_SESSION['auth_token'])) : ?>
                             <li>
                                 <a href="<?php $BASE_URL ?>auth.php" class="default-btn">Entrar</a>
                             </li>
                         <?php else : ?>
-                            <li>
-                                <a href="index.php">Home</a>
-                            </li>
+
                             <li>
                                 <a href="<?php $BASE_URL ?>editProfile.php"> <i class="fa fa-user" aria-hidden="true"></i>
                                     <?php echo $nome ?></a>
@@ -144,13 +139,6 @@ if (!empty($flassMessage["msg"])) {
                 <div class="item"><a href="addPermission.php"><i class="fas fa-unlock-alt"></i>Autorizador</a></div>
                 <?php foreach ($menuarrays as $menu) : ?>
                     <div class="item"><a target="_blank" href="<?= $menu->link ?>"><i class="<?= $menu->class ?>"></i><?= $menu->menu ?></a></div>
-                  
-
-
-
-
-
-
 
                 <?php endforeach; ?>
                 <div class="item"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Sair</a></div>

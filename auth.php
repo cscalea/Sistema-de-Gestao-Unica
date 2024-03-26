@@ -8,10 +8,10 @@ $message = new Message($BASE_URL);
 <!-- Header da tela de login -->
 <div class="navbar-container">
     <nav>
-        <a href="#">
+        <!-- <a href="#">
             <img src="img/ipem.png" alt="hDC Host" class="logo" />
-        </a>
-        <ul class="navbar-items">
+        </a> -->
+        <ul class="navbar-items-right">
             <li>
                 <a href="<?php $BASE_URL ?>auth.php" class="default-btn">Entrar</a>
             </li>
