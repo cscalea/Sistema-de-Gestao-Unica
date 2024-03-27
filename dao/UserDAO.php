@@ -5,17 +5,14 @@ require_once("config/globals.php");
 require_once("config/ldapConfig.php");
 require_once("ldap.php");
 
-
 class UserDAO implements UserDAOInterface
 {
-   
     private $conn;
     private $url;
     private $message;
-    //MÉTODO CONSTRUTOR DO USERDAO PARA INSTANCIAR O OBJETO EM OUTRAS CLASSES
+
     public function __construct(PDO $conn, $url)
-    {
-       
+    { 
         $this->conn = $conn;
         $this->url = $url;
         $this->message = new Message($url);
@@ -37,34 +34,33 @@ class UserDAO implements UserDAOInterface
             ldap_set_option($ldapcon, LDAP_OPT_PROTOCOL_VERSION, 3);
             ldap_set_option($ldapcon, LDAP_OPT_REFERRALS, 0);
 
-            $ldapbind = ldap_bind($ldapcon, "$user@$dominio", $_POST['password']);
-
+            $ldapbind = ldap_bind($ldapcon, "$user@$dominio", $ldap_pass);
             // verify binding
 
             if ($ldapbind) { //SUCESSO NA CONEXÃO
                 $_SESSION['login'] = $login;
-                // $this->verifyUser($_SESSION['login']); //FIRST ACCESS ???
                 $filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=$user))"; //CONFIGURAÇÃO PARA RESGATAR DADOS DO USUÁRIO LOGADO
-                $attributes = array("cn", "mail", "scriptPath", "title", "department", "distinguishedname");
-                $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes);
-                $entry = ldap_first_entry($ldapcon, $search_result);
+                $attributes = array("cn", "mail", "scriptPath", "title", "department"); //ATRIBUTOS QUE SERÃO BUSCADOS NO AD PARA TRATATIVAS NO CÓDIGO
+                $search_result = ldap_search($ldapcon, $ldap_base_dn, $filter, $attributes); //FUNÇÃO LDAP SEARCH COM PARÂMETROS DE CONEXÃO, FILTRO, ATRIBUTOS ETC
+                $entry = ldap_first_entry($ldapcon, $search_result); 
                 $fullname = ldap_get_values($ldapcon, $entry, "cn")[0];
                 $email = ldap_get_values($ldapcon, $entry, "mail")[0];
                 $sp = ldap_get_values($ldapcon, $entry, "scriptPath")[0];
                 $cargo = ldap_get_values($ldapcon, $entry, "title")[0];
                 $dpto = ldap_get_values($ldapcon, $entry, "department")[0];
-                $uid = ldap_get_values($ldapcon, $entry, "distinguishedname")[0];
 
                 $token = bin2hex(random_bytes(16)); //GERA UM TOKEN 
-                $_SESSION['auth_token'] = $token; //TOKEN ADICIONADO NA SESSION DO USUÁRIO
-                $_SESSION['scriptPath'] = $sp; //SETA OS DADOS DO USUÁRIO LOGADO NA GLOBAL SESSION
+
+                //SETA OS ATRIBUTOS NA SESSION DO USUÁRIO
+                $_SESSION['auth_token'] = $token; 
+                $_SESSION['scriptPath'] = $sp; 
                 $_SESSION['mail'] = $email;
                 $_SESSION['fullname'] = $fullname;
                 $_SESSION['cargo'] = $cargo;
                 $_SESSION['dpto'] = $dpto;
-                $_SESSION['uid'] = $uid;
+
                 $this->updateUser($fullname, $email, $user);
-                $this->setTokenToSession(); //INSERE O TOKEN DO USUÁRIO NO BANCO, É EXCLUÍDO AO FAZER LOGOUT
+                $this->setTokenInDatabase(); //INSERE O TOKEN DO USUÁRIO NO BANCO, É EXCLUÍDO AO FAZER LOGOUT
                 header('location: index.php');
             } else {
                 $_SESSION['login'] = "";
@@ -81,7 +77,7 @@ class UserDAO implements UserDAOInterface
     }
 
     //seta o token do usuário para a global session
-    public function setTokenToSession()
+    public function setTokenInDatabase()
     {
         $token = bin2hex(random_bytes(16));
         $_SESSION['auth_token'] = $token;
@@ -91,6 +87,8 @@ class UserDAO implements UserDAOInterface
         $stmt->execute();
     }
 
+
+/* ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- */
     //FUNCTION QUE SETA O ID DO USUÁRIO LOGADO PARA A SESSION
     public function setIdUserToSession($login)
     {
@@ -99,10 +97,11 @@ class UserDAO implements UserDAOInterface
         $stmt->bindParam(":login", $login);
         $stmt->execute();
         $str = $stmt->fetch();
-
         $id = $str[0];
         $_SESSION['userid'] = $id;
     }
+/* ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- */
+
 
     //FUNCTION BUILDUSER, INSTANCIA O USUÁRIO E ATRIBUI OS DADOS RECEBIDOS VIA FORMULÁRIO POST AOS ATRIBUTOS DO OBJETO
     public function buildUser($data)
@@ -116,6 +115,8 @@ class UserDAO implements UserDAOInterface
         return $user;
     }
 
+
+/* ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- */
     //FUNCTION QUE LISTA OS USUÁRIOS - UTILIZADO NO MÓDULO DE ADICIONAR MÓDULO
     public function listUsers()
     {
@@ -133,6 +134,8 @@ class UserDAO implements UserDAOInterface
         }
         return $users;
     }
+/* ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- */
+
 
     //FUNCTION QUE DIRECIONA O USUÁRIO PARA TELA DE LOGIN CASO NÃO EXISTA LOGIN NA SESSION
     public function verifyAuth($login)
@@ -149,6 +152,7 @@ class UserDAO implements UserDAOInterface
         }
     }
 
+    //Insere os dados do usuário que logar no BANCO, com base em seus dados buscados no AD
     public function updateUser($name, $email, $login)
     {
         $stmt1 = $this->conn->prepare("SELECT * FROM users WHERE login = :login");
@@ -156,8 +160,6 @@ class UserDAO implements UserDAOInterface
         $stmt1->fetchAll();
         $stmt1->execute();
         if ($stmt1->rowCount() < 1) {
-
-
             $stmt = $this->conn->prepare("INSERT INTO users (name, login, email) VALUES (:name, :login, :email)");
             $stmt->bindParam(":name", $name);
             $stmt->bindParam(":email", $email);

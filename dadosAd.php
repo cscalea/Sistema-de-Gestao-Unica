@@ -23,8 +23,6 @@
       echo '<br>';
       echo  'Setor: ' . $_SESSION['dpto'];
       echo '<br>';
-      echo 'Dados do user: ' . $_SESSION['uid'];
-      echo '<br>';
       echo 'token para autenticar em outros sistemas: ' . $_SESSION['auth_token'];
     
        ?>

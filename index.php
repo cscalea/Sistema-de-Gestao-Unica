@@ -8,66 +8,22 @@ $userid = $userDao->setIdUserToSession($_SESSION['login']);
 $permission = new PermissionsDAO($conn, $BASE_URL);
 ?>
 
-
-
-
 <div class="container">
-
-<?php for($i = 0; $i<4; $i++):?>
-  <div class="box">
-    <img src="img/logo-branco.png" style="width: 40px;">
-    <p style="color: white;">seminário INOVAÇÃO - 2024</p>
-    <hr style="background-color: white; margin-bottom: 5px;">
-  <img src="img/site.png" style="width: 260px; margin-left: 24px; margin-top: 14px;">
-    <div class="cardBox">
-      <p>saída mais</p>
+<!-- Apenas preencher painel central para melhor visualização -->
+  <?php for ($i = 0; $i < 4; $i++) : ?>
+    <div class="box">
+      <img src="img/logo-branco.png" style="width: 40px;">
+      <p style="color: white;">seminário INOVAÇÃO - 2024</p>
+      <hr style="background-color: white; margin-bottom: 5px;">
+      <img src="img/site.png" style="width: 260px; margin-left: 24px; margin-top: 14px;">
+      <div class="cardBox">
+        <p>saiba mais</p>
+      </div>
     </div>
-      
-  </div>
   <?php endfor; ?>
-
+<!-- Apenas preencher painel central para melhor visualização -->
 </div>
 
-
-
-
-
-
-<!-- </div> -->
-</div>
-<!-- <div class="container">
-  <div class="row">
-      <div class="col-4">
-    <h1>IPEM</h1>
-    <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-  </div>
-  <hr>
-  <div class="row">
-      <div class="col-4">
-    <h1>IPEM</h1>
-    <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-      <div class="col-4">
-      <h1>IPEM</h1>
-      <img style="width: 120px" src="<?= $BASE_URL ?>img/ipem-azul.png">
-      </div>
-  </div> 
-</div> -->
-</div>
-</div>
 <?php
 require_once("templates/footer.php");
 ?>
@@ -84,23 +40,3 @@ require_once("templates/footer.php");
     window.location.href = urlDestino;
   });
 </script>
-
-<?php
-// if (isset($_GET['token'])) {
-//     // Receber o token enviado via GET
-//     $tokenRecebido = $_GET['token'];
-//     $stmt = $conn->prepare("SELECT * FROM users WHERE token = :token");
-// $stmt->bindParam(":token", $tokenRecebido);
-// $stmt->execute();
-// if($stmt->rowCount() > 0){
-//   echo "Token válido. Usuário autenticado!";
-// }
-
-
-//      else {
-//       echo "Token inválido. Acesso negado!";
-//     }
-// } else {
-//     echo "Token não recebido.";
-// }
-?>

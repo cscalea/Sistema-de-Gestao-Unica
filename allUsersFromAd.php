@@ -37,9 +37,9 @@ $userDao = new UserDAO($conn, $BASE_URL);
 // $userDao->allUsersFromAd();
 $ldap_server = "10.15.16.191";
 $dominio = "ipem.sp"; //Dominio local ou global
-$user = "casjunior";
+$user = "svc_app";
 $ldap_porta = "389";
-$ldap_pass   = "King@2134";
+$ldap_pass   = "Ipem@2024";
 $ldap_base_dn = "dc=ipem,dc=sp";
 $ldapcon = ldap_connect($ldap_server, $ldap_porta) or die("Could not connect to LDAP server."); //CONEXÃO LDAP
 if ($ldapcon) {

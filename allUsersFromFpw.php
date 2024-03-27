@@ -52,6 +52,7 @@ if (!$connection) {
 $query = 'select f.fumatfunc, f.funomfunc,
 f.fucpf,
 f.fuidentnum,
+f.fuidentfun,
 f.fucodcargo,
 f.fucodlot,
 c1.cadescargo,
@@ -67,7 +68,6 @@ cargos    c2,
 situacao  s
 where f.fucodlot  =  l.locodlot  
 and f.fuorgresp  in (3,6)
-
 and f.fucodsitu = s.stcodsitu
 and f.fucargocom  = c1.cacodcargo (+)
 and f.fucodcargo  = c2.cacodcargo (+)
@@ -82,10 +82,14 @@ oci_execute($stmt);
             <th onclick="sortTable(0)" style="cursor: pointer;">Nome</th>
             
             <th onclick="sortTable(1)" style="cursor: pointer;">Cargo</th>
+            
+            <th onclick="sortTable(2)" style="cursor: pointer;">Cargo Comissionado</th>
 
-    <th onclick="sortTable(2)" style="cursor: pointer;">Matrícula</th>
+    <th onclick="sortTable(3)" style="cursor: pointer;">Prontuário</th>
 
-    <th onclick="sortTable(3)" style="cursor: pointer;">Setor</th>
+    <th onclick="sortTable(4)" style="cursor: pointer;">Matrícula</th>
+
+    <th onclick="sortTable(5)" style="cursor: pointer;">Setor</th>
     
         </tr>
 
@@ -104,8 +108,12 @@ oci_execute($stmt);
                 <td>
                 <?php echo $row['CADESCARGO'] ?>
                 </td>
+
+                <td><?php echo $row['FUCODCARGO'] ?></td>
                 
                 <td><?php echo $row['FUMATFUNC'] ?></td>
+
+                <td><?php echo $row['FUIDENTFUN'] ?></td>
                 <td><?php echo $setorformat ?></td>
 
             </tr>

@@ -1,11 +1,10 @@
 <?php
 require_once("templates/header.php");
 require_once("dao/UserDAO.php");
-require_once("model/message.php");
 $userDao = new UserDAO($conn, $BASE_URL);
-$message = new Message($BASE_URL);
 ?>
-<!-- Header da tela de login -->
+
+<!-- Header da tela de login - por enquanto, fixo -->
 <div class="navbar-container">
     <nav>
         <!-- <a href="#">
@@ -71,13 +70,7 @@ $message = new Message($BASE_URL);
 </script>
 
 <script>
-    function alertaAcesso() {
-        alert('acessos de rede para acessar');
-        history.back()
-    }
-</script>
-<script>
-    function verificarCapsLock(event) {
+    function verificarCapsLock(event) { //INFORMA CAPSLOCK LIGADO NA TELA DE LOGIN PARA O USUÁRIO
         var capsLockAtivado = event.getModifierState && event.getModifierState('CapsLock');
         var mensagemCapsLock = document.getElementById('mensagemCapsLock');
 
