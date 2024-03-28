@@ -5,18 +5,18 @@ $userDao = new UserDAO($conn, $BASE_URL);
 ?>
 
 <!-- Header da tela de login - por enquanto, fixo -->
-<div class="navbar-container">
+<!-- <div class="navbar-container">
     <nav>
-        <!-- <a href="#">
+        <a href="#">
             <img src="img/ipem.png" alt="hDC Host" class="logo" />
-        </a> -->
+        </a>
         <ul class="navbar-items-right">
             <li>
                 <a href="<?php $BASE_URL ?>auth.php" class="default-btn">Entrar</a>
             </li>
         </ul>
     </nav>
-</div>
+</div> -->
 
 <?php if (!isset($_SESSION['login']) || $_SESSION['login'] === "") : ?>
 

@@ -56,14 +56,15 @@ if (!empty($flassMessage["msg"])) {
 </head>
 
 <body>
-    <?php
-    if (isset($_SESSION['login']))
-        if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
+   
         <header>
             <!-- MENU BUTTON -->
+            <?php if (isset($_SESSION['login']))
+        if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
             <div class="menu-btn">
                 <i id="openMenu" class="fas fa-bars"></i>
             </div>
+            <?php endif; ?>
             <div class="navbar-container">
                 <nav>
                     <!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->
@@ -76,7 +77,8 @@ if (!empty($flassMessage["msg"])) {
                         <li>
                             <a href="index.php">Home</a>
                         </li>
-
+                        <?php if (isset($_SESSION['login']))
+        if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
                         <li>
                             <a href="allUsersFromAd.php">AD - All Users</a>
                         </li>
@@ -88,11 +90,10 @@ if (!empty($flassMessage["msg"])) {
                         <li>
                             <a href="dadosAd.php">Userdata</a>
                         </li>
-
                         <li>
                             <button id="btnEnviarToken">Enviar Token</button>
                         </li>
-
+                        <?php endif; ?>
                     </ul>
 
                     <ul class="navbar-items-right">
@@ -107,7 +108,6 @@ if (!empty($flassMessage["msg"])) {
                                 <a href="<?php $BASE_URL ?>editProfile.php"> <i class="fa fa-user" aria-hidden="true"></i>
                                     <?php echo $nome ?></a>
                             </li>
-
                             <li>
                                 <a href="<?php $BASE_URL ?>logout.php" class="default-btn">Sair</a>
                             </li>
@@ -118,6 +118,9 @@ if (!empty($flassMessage["msg"])) {
             </div>
         </header>
 
+        <?php
+    if (isset($_SESSION['login']))
+        if (!empty($_SESSION['login']) || $_SESSION['login'] != "") : ?>
         <div class="side-bar">
             <!-- HEADER SECTION -->
             <header>
