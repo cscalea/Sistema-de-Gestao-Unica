@@ -23,13 +23,16 @@ require_once("templates/header.php");
         
         <div class="form-group">
             <label for="setor">Setor:</label>
-            <input type="Setor" disabled required pattern="[A-Za-z, ]+" title="Digite um setor válido" id="inputSetor" name="setor" value="<?php echo $_SESSION['dpto'] ?>">
+            <input type="Setor" disabled required pattern="[A-Za-z, ]+" title="Digite um setor válido" id="inputSetor" name="setor" value="<?php echo $_SESSION['setor'] ?>">
 
         </div>
         <div class="form-group">
             <label for="cargo">Cargo:</label>
             <input type="cargo" disabled required pattern="[A-Za-z, ]+" title="Digite um cargo válido" id="inputcargo" name="cargo" value=" <?php echo $_SESSION['cargo'] ?>">
-
+        </div>
+        <div class="form-group">
+            <label for="matricula">matricula:</label>
+            <input type="matricula" disabled required pattern="[A-Za-z, ]+" title="Digite um matricula válido" id="inputmatricula" name="matricula" value=" ts">
         </div>
 
         <!-- <button type="submit" class="card-btn">Alterar</button> -->

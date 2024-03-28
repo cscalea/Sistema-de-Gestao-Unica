@@ -6,8 +6,9 @@ id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(55),
 login VARCHAR(50),
 email VARCHAR(120) UNIQUE,
+token VARCHAR(200),
 setor VARCHAR(200),
-token VARCHAR(200)
+token_date date
 );
 
 INSERT into users (name, login, email, setor) VALUES ("carlos", "casjun", "cas@ipem.com", "dadm");

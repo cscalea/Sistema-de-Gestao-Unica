@@ -17,6 +17,7 @@ class MenuDAO implements MenuDAOInterface
         $this->message = new Message($url);
     }
 
+    
     //FUNCTION QUE INSTANCIA UM OBJETO E ATRIBUI OS DADOS AO OBJETO INSTANCIADO
     //EXEMPLO, SELECT NO BANCO DA FUNCTION LISTMENUS2 CRIA UM ARRAY ATRAVÉS DO fetchAll(), e chama a function Build que pega cada um desses valores e instancia o objeto MENU
     public function buildMenu($data)
@@ -28,6 +29,7 @@ class MenuDAO implements MenuDAOInterface
         $menu->class = $data["class"];
         return $menu;
     }
+
 
     //FUNCTION QUE LISTA TODOS OS MENUS DO SISTEMA
     public function listMenus()

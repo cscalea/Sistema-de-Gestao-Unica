@@ -6,7 +6,7 @@ require_once("model/menu.php");
 require_once("dao/MenuDAO.php");
 require_once("dao/PermissionsDAO.php");
 
-/* Pega o nome completo do usuárioe utiliza a function explode para separar o primeiro NOME */
+/* Pega o nome completo do usuário e utiliza a function explode para separar o primeiro NOME */
 if (isset($_SESSION['fullname'])) {
     $n = explode(" ", $_SESSION['fullname']);
     $nome = $n[0];
@@ -30,7 +30,6 @@ if (isset($_SESSION['login'])) {
 /* ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- */
 $message = new Message($BASE_URL);
 $flassMessage = $message->getMessage();
-
 if (!empty($flassMessage["msg"])) {
     $message->clearMessage();
 }
@@ -45,7 +44,7 @@ if (!empty($flassMessage["msg"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Único de Gestão</title>
-     <link class="circuito" rel="short icon" href="<?= $BASE_URL ?>img/logo-branco.png" /> <!-- Ícone da aba do navegador -->
+    <link class="circuito" rel="short icon" href="<?= $BASE_URL ?>img/logo-branco.png" /> <!-- Ícone da aba do navegador -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" integrity="sha512-drnvWxqfgcU6sLzAJttJv7LKdjWn0nxWCSbEAtxJ/YYaZMyoNLovG7lPqZRdhgL1gAUfa+V7tbin8y+2llC1cw==" crossorigin="anonymous" />
     <!-- Font Awesome - ícones gerais -->
@@ -67,11 +66,11 @@ if (!empty($flassMessage["msg"])) {
             </div>
             <div class="navbar-container">
                 <nav>
-<!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->                    
+                    <!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->
                     <!-- <a href="#">
                 <img src="img/ipem.png" alt="ipem sp" class="logo" />
             </a> -->
-<!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->        
+                    <!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->
                     <ul class="navbar-items">
 
                         <li>
@@ -111,7 +110,7 @@ if (!empty($flassMessage["msg"])) {
 
                             <li>
                                 <a href="<?php $BASE_URL ?>logout.php" class="default-btn">Sair</a>
-                            </li>                           
+                            </li>
                         <?php endif; ?>
 
                     </ul>
@@ -151,7 +150,7 @@ if (!empty($flassMessage["msg"])) {
     <?php endif; ?>
 
 
-                                        <!-- JS Menu Lateral -->
+    <!-- JS Menu Lateral -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
@@ -180,13 +179,14 @@ if (!empty($flassMessage["msg"])) {
     </script>
 
 
-                                <!-- JS Usuário Não Volta Página -->
+    <!-- JS Usuário Não Volta Página -->
     <script>
         history.pushState(null, null, document.URL);
         window.addEventListener('popstate', function() {
             history.pushState(null, null, document.URL);
         });
     </script>
+
 
     <!-- ---------------------------------- AVALIAR PARA APAGAR ---------------------------------- -->
     <?php if (!empty($flassMessage["msg"])) : ?>

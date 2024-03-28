@@ -59,6 +59,7 @@ $userDao = new UserDAO($conn, $BASE_URL);
         </div>
     </div>
 <?php endif; ?>
+
 <script>
     function validarTexto(input) {
         var regex = /^[a-zA-Z]*$/; // Expressão regular para aceitar apenas letras

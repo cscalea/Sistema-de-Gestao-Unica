@@ -4,7 +4,6 @@ require_once("dao/UserDAO.php");
 require_once("dao/PermissionsDAO.php");
 $userDao = new UserDAO($conn, $BASE_URL);
 $userDao->verifyAuth($_SESSION['login']);
-$userid = $userDao->setIdUserToSession($_SESSION['login']);
 $permission = new PermissionsDAO($conn, $BASE_URL);
 ?>
 

@@ -75,6 +75,9 @@ order by f.funomfunc';
 $stmt = oci_parse($connection, $query);
 oci_execute($stmt);
 
+
+
+
 ?>
 <a href="index.php" ;>home</a>
     <table id="customers">

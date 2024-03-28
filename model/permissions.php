@@ -1,12 +1,9 @@
-<?php
-
-    
+<?php   
     class Permissions{      //CRIAÇÃO DA CLASSE USUÁRIO E ATRIBUTOS
         public $id;
         public $fk_iduser;
         public $fk_idmenu;
-        public $adm;
-        
+        public $adm;      
     }
 
     //CRIAÇÃO DA INTERFACE QUE SERÁ IMPLEMENTADA ONDE CONVÉM
@@ -17,7 +14,4 @@
         public function verifyMenu($fk_idusers, $fk_idmenus); // VERIFICA SE O USUÁRIO JÁ POSSUI O MENU, PARA CONTROLAR AÇÃO DE ADICIONAR OU REMOVER MENU AO USUÁRIO SELECIONADO
         public function verifyIfUserHasAdm($fk_idusers); //ESSA FUNÇÃO VERIFICA SE O USUÁRIO É ADMINISTRADOR EM ALGUM MÓDULO      
     }
-
-    
-
 ?>
